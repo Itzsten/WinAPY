@@ -2,7 +2,7 @@
 Windows API wrapper for Python written in C.
 
 # Installation
-Installation is as simple as
+Installation is as simple as:
 ```py
 pip install winapy
 ```
