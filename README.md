@@ -1,6 +1,11 @@
 # WinAPY
 Windows API wrapper for Python written in C.
 
+# Installation
+Installation is as simple as
+```py
+pip install winapy```
+
 ## Features
 Currently, 135 Windows functions and macros are supported, and there will be more futuristically.
 
