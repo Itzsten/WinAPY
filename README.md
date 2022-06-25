@@ -14,3 +14,7 @@ WinAPY features high-level and rich communications with the Windows API, bringin
 
 ## Issues
 For any bugs/suggestions, please create a new issue in the Issues tab. 
+
+## Documentation
+**Notice: ** The documentation is incomplete at the moment.
+The documentation is found under the Wiki tab.
