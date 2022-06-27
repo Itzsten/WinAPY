@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+pre {
+    display: inline-block;
+}
+
+body {
+    font-family: Comfortaa;
+    font-size: 125%;
+    color: white;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+
+hr {
+    border: 3px solid white;
+    background-color: white;
+    border-radius: 5px;
+}
+h4 {
+    font-weight: normal;
+}
+i {
+    font-weight: bold;
+}
+input {
+    border-radius: 5px;
+    font-family: Comfortaa;
+    transform: scale(2.0) translate(-30%);
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 200px;
+}
+div.top {
+    background-color: rgb(41, 41, 41);
+    position: sticky;
+    top: 0;
+    z-index: 99999999999; /* :) */
+}
+div.container {
+    margin-left: 7px;
+}
+h2.fh {
+    line-height: 0;
+    position: absolute;
+    font-size: 2.5rem;
+    top: -7px;
+    left: 5px;
+}
+a {
+    color: white;
+    transition: 0.3s;
+    text-decoration: none;
+}
+a:hover {
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+<h2 class="fh"><a href="documentation.html">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
+<br><br>
+<hr>
+</div>
+
+<script type="text/javascript">
+var locationText = 0;
+function updateRows(event) {
+    let el = document.getElementById("search");
+    let functions = document.getElementsByTagName("h1");
+    let value = el.value.toLowerCase();
+    let isEnter = event.code == "Enter";
+
+    if (event.code == "Escape") {
+        el.blur();
+        el.value = "";
+        return;
+    }
+
+    if (isEnter) locationText++;
+    else locationText = 0;
+
+    let findCount = 0;
+
+    for (var i = 0; i < functions.length; i++) {
+        if (functions[i].innerText.toLowerCase().includes(value)) {
+            if (locationText == findCount) {
+                functions[i].scrollIntoView();
+                window.scrollBy(0, -100);
+                return;
+            }
+            findCount++;
+        }
+    }
+}
+document.getElementById("search").addEventListener("keyup", updateRows);
+</script>
+
+<div class="container">
+
+<h1>waveOutClose</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutClose</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Closes and frees memory from the specified waveform-audio output device.</h4>
+<h2>Parameters</h2>
+<h4><i>hwo</i> HWAVEOUT
+<br><blockquote>Handle to the waveform-audio output device.</blockquote>
+</h4>
+<hr>
+<h1>waveOutOpen</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutOpen</span><span style="color:white;">(deviceID: int, wfx: tuple, callback: int, instance: int, fOpen: int)</span> <span style="color:#f92672">-&gt;</span> HWAVEOUT:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Opens the given waveform-audio output device for playback. The return value specifies a handle identifying the open waveform-audio output device.</h4>
+<h2>Parameters</h2>
+<h4><i>deviceID</i> int
+<br><blockquote>Identifier of the waveform-audio output device to open. It can be either a device identifier or a handle of an open waveform-audio input device. You can also use the following flag instead of a device identifier;<br><b>WAVE_MAPPER</b> - The function selects a waveform-audio output device capable of playing the given format.</blockquote>
+<br><i>wfx</i> tuple
+<br><blockquote>A tuple of 6 integers representing the values below;<br><ul><li><b>wFormatTag</b><br>Waveform-audio format type. Format tags are registered with Microsoft Corporation for many compression algorithms. For one- or two-channel PCM data, this value should be WAVE_FORMAT_PCM.<br></li><li><b>nChannels</b><br>Number of channels in the waveform-audio data. Monaural data uses one channel and stereo data uses two channels.<br></li><li><b>nSamplesPerSec</b><br>Sample rate, in samples per second (hertz). If wFormatTag is WAVE_FORMAT_PCM, then common values for nSamplesPerSec are 8.0 kHz, 11.025 kHz, 22.05 kHz, and 44.1 kHz. For non-PCM formats, this member must be computed according to the manufacturer's specification of the format tag.<br></li><li><b>nAvgBytesPerSec</b><br>Required average data-transfer rate, in bytes per second, for the format tag. If wFormatTag is WAVE_FORMAT_PCM, nAvgBytesPerSec should be equal to the product of nSamplesPerSec and nBlockAlign. For non-PCM formats, this member must be computed according to the manufacturer's specification of the format tag.<br></li><li><b>nBlockAlign</b><br>Block alignment, in bytes. The block alignment is the minimum atomic unit of data for the wFormatTag format type. If wFormatTag is WAVE_FORMAT_PCM or WAVE_FORMAT_EXTENSIBLE, nBlockAlign must be equal to the product of nChannels and wBitsPerSample divided by 8 (bits per byte). For non-PCM formats, this member must be computed according to the manufacturer's specification of the format tag.<br><br>Software must process a multiple of nBlockAlign bytes of data at a time. Data written to and read from a device must always start at the beginning of a block. For example, it is illegal to start playback of PCM data in the middle of a sample (that is, on a non-block-aligned boundary).<br></li><li><b>wBitsPerSample</b><br>Bits per sample for the wFormatTag format type. If wFormatTag is WAVE_FORMAT_PCM, then wBitsPerSample should be equal to 8 or 16. For non-PCM formats, this member must be set according to the manufacturer's specification of the format tag. If wFormatTag is WAVE_FORMAT_EXTENSIBLE, this value can be any integer multiple of 8 and represents the container size, not necessarily the sample size; for example, a 20-bit sample size is in a 24-bit container. Some compression schemes cannot define a value for wBitsPerSample, so this member can be 0.<br></li></ul></blockquote>
+<br><i>callback</i> int
+<br><blockquote>Specifies the callback mechanism, or None.</blockquote>
+<br><i>instance</i> int
+<br><blockquote>User-instance data passed to the callback mechanism. This parameter is not used with the window callback mechanism.</blockquote>
+<br><i>fOpen</i> int
+<br><blockquote><ul><li><b>CALLBACK_EVENT</b><br>The dwCallback parameter is an event handle.<br></li><li><b>CALLBACK_NULL</b><br> No callback mechanism. This is the default setting.<br></li><li><b>CALLBACK_THREAD</b><br> The dwCallback parameter is a thread identifier.<br></li><li><b>CALLBACK_WINDOW</b><br> The dwCallback parameter is a window handle.<br></li><li><b>WAVE_ALLOWSYNC</b><br> If this flag is specified, a synchronous waveform-audio device can be opened. If this flag is not specified while opening a synchronous driver, the device will fail to open.<br></li><li><b>WAVE_MAPPED_DEFAULT_COMMUNICATION_DEVICE</b><br> If this flag is specified and the uDeviceID parameter is WAVE_MAPPER, the function opens the default communication device. This flag applies only when uDeviceID equals WAVE_MAPPER. (Requires Windows 7)<br></li><li><b>WAVE_FORMAT_DIRECT</b><br> If this flag is specified, the ACM driver does not perform conversions on the audio data.<br></li><li><b>WAVE_FORMAT_QUERY</b><br> If this flag is specified, waveOutOpen queries the device to determine if it supports the given format, but the device is not actually opened.<br></li><li><b>WAVE_MAPPED</b><br> If this flag is specified, the uDeviceID parameter specifies a waveform-audio device to be mapped to by the wave mapper.<br></li></ul></blockquote>
+</h4>
+<hr>
+<h1>waveOutPrepareHeader</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutPrepareHeader</span><span style="color:white;">(hwo: HWAVEOUT, hdr: tuple)</span> <span style="color:#f92672">-&gt;</span> tuple:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>The waveOutPrepareHeader function prepares a waveform-audio data block for playback. The return value should be used as the new wave header, as it is prepared for playback.</h4>
+<h2>Parameters</h2>
+<h4><i>hwo</i> HWAVEOUT
+<br><blockquote>Handle to the waveform-audio output device.</blockquote>
+<br><i>hdr</i> tuple
+<br><blockquote>Tuple that identifies the data block to be prepared. Must contain the followings values;<br><ul><li>The data block to be prepared, as a <b>bytearray</b> object.</li><li>When the header is used in input, specifies how much data is in the buffer. If it is not used in input, set this value to 0.</li><li>User data, or 0.</li><li>A bitwise OR of zero of more flags.</li><li>Number of times to play the loop. This member is used only with output buffers. Zero if unused</li></ul></blockquote>
+</h4>
+<hr>
+<h1>waveOutUnprepareHeader</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutUnprepareHeader</span><span style="color:white;">(hwo: HWAVEOUT, hdr: tuple)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Frees memory from the specified header and waveform-audio output device.</h4>
+<h2>Parameters</h2>
+<h4><i>hwo</i> HWAVEOUT
+<br><blockquote>Handle to the waveform-audio output device.</blockquote>
+<br><i>hdr</i> tuple
+<br><blockquote>The header to be freen</blockquote>
+</h4>
+<hr>
+<h1>waveOutWrite</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutWrite</span><span style="color:white;">(hwo: HWAVEOUT, hdr: tuple)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sends a data block to the given waveform-audio output device.</h4>
+<h2>Parameters</h2>
+<h4><i>hwo</i> HWAVEOUT
+<br><blockquote>Handle to the waveform-audio output device.</blockquote>
+<br><i>hdr</i> tuple
+<br><blockquote>The header containing the data block to be sent. For more information, please look under the waveOutPrepareHeader function.</blockquote>
+</h4></div>
+
+</body>
+</html>
