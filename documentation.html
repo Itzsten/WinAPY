@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+pre {
+    display: inline-block;
+}
+
+body {
+    font-family: Comfortaa;
+    font-size: 125%;
+    color: white;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+
+hr {
+    border: 3px solid white;
+    background-color: white;
+    border-radius: 5px;
+}
+h4 {
+    font-weight: normal;
+}
+i {
+    font-weight: bold;
+}
+input {
+    border-radius: 5px;
+    font-family: Comfortaa;
+    transform: scale(2.0) translate(-30%);
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 200px;
+}
+div.top {
+    background-color: rgb(41, 41, 41);
+    position: sticky;
+    top: 0;
+}
+div.container {
+    margin-left: 7px;
+}
+h2.fh {
+    line-height: 0;
+    position: absolute;
+    font-size: 2.5rem;
+    top: -7px;
+    left: 5px;
+}
+a {
+    color: white;
+    transition: 0.3s;
+}
+a:hover {
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+<h2 class="fh">WinAPY Documentation</h2><input placeholder="Search modules here..." id="search">
+<br><br>
+<hr>
+</div>
+
+<script type="text/javascript">
+var locationText = 0;
+function updateRows(event) {
+    let el = document.getElementById("search");
+    let functions = document.getElementsByTagName("h1");
+    let value = el.value.toLowerCase();
+    let isEnter = event.code == "Enter";
+
+    if (event.code == "Escape") {
+        el.blur();
+        el.value = "";
+        return;
+    }
+
+    if (isEnter) locationText++;
+    else locationText = 0;
+
+    let findCount = 0;
+
+    for (var i = 0; i < functions.length; i++) {
+        if (functions[i].innerText.toLowerCase().includes(value)) {
+            if (locationText == findCount) {
+                functions[i].scrollIntoView();
+                window.scrollBy(0, -100);
+                return;
+            }
+            findCount++;
+        }
+    }
+}
+document.getElementById("search").addEventListener("keyup", updateRows);
+</script>
+
+<div class="container">
+<center><h1><a href="documentation_winapy_gdi.html">winapy_gdi</a></h1><h1><a href="documentation_winapy_user.html">winapy_user</a></h1></center></div>
+
+</body>
+</html>

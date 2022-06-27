@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+pre {
+    display: inline-block;
+}
+
+body {
+    font-family: Comfortaa;
+    font-size: 125%;
+    color: white;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+
+hr {
+    border: 3px solid white;
+    background-color: white;
+    border-radius: 5px;
+}
+h4 {
+    font-weight: normal;
+}
+i {
+    font-weight: bold;
+}
+input {
+    border-radius: 5px;
+    font-family: Comfortaa;
+    transform: scale(2.0) translate(-30%);
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 200px;
+}
+div.top {
+    background-color: rgb(41, 41, 41);
+    position: sticky;
+    top: 0;
+}
+div.container {
+    margin-left: 7px;
+}
+h2.fh {
+    line-height: 0;
+    position: absolute;
+    font-size: 2.5rem;
+    top: -7px;
+    left: 5px;
+}
+a {
+    color: white;
+    transition: 0.3s;
+    text-decoration: none;
+}
+a:hover {
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+<h2 class="fh"><a href="documentation.html">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
+<br><br>
+<hr>
+</div>
+
+<script type="text/javascript">
+var locationText = 0;
+function updateRows(event) {
+    let el = document.getElementById("search");
+    let functions = document.getElementsByTagName("h1");
+    let value = el.value.toLowerCase();
+    let isEnter = event.code == "Enter";
+
+    if (event.code == "Escape") {
+        el.blur();
+        el.value = "";
+        return;
+    }
+
+    if (isEnter) locationText++;
+    else locationText = 0;
+
+    let findCount = 0;
+
+    for (var i = 0; i < functions.length; i++) {
+        if (functions[i].innerText.toLowerCase().includes(value)) {
+            if (locationText == findCount) {
+                functions[i].scrollIntoView();
+                window.scrollBy(0, -100);
+                return;
+            }
+            findCount++;
+        }
+    }
+}
+document.getElementById("search").addEventListener("keyup", updateRows);
+</script>
+
+<div class="container">
+
+<h1>Beep</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Beep</span><span style="color:white;">(freq: int, duration: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Generates simple tones on the speaker. The function is synchronous; it performs an alertable wait and does not return control to its caller until the sound finishes.</h4>
+<h2>Parameters</h2>
+<h4><i>freq</i> int
+<br><blockquote>The frequency of the sound, in hertz. This parameter must be in the range 37 through 32,767</blockquote>
+<br><i>duration</i> int
+<br><blockquote>The duration of the sound, in milliseconds.</blockquote>
+</h4>
+<hr>
+<h1>DrawIcon</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DrawIcon</span><span style="color:white;">(hdc: HDC, x: int, y: int, icon: HICON)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws an icon or cursor into the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>The X-position to draw the icon at</blockquote>
+<br><i>y</i> int
+<br><blockquote>The Y-position to draw the icon at</blockquote>
+<br><i>icon</i> HICON
+<br><blockquote>The icon to be drawn</blockquote>
+</h4>
+<hr>
+<h1>DrawIconEx</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DrawIconEx</span><span style="color:white;">(hdc: HDC, x: int, y: int, icon: HICON, width: int, height: int, frame: int, brush: HBRUSH, diFlags: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws an icon or cursor into the specified device context performing the specified raster operations, and stretching or compressing the icon or cursor as specified.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>The X-position to draw the icon at</blockquote>
+<br><i>y</i> int
+<br><blockquote>The Y-position to draw the icon at</blockquote>
+<br><i>icon</i> HICON
+<br><blockquote>The icon to be drawn</blockquote>
+<br><i>width</i> int
+<br><blockquote>The logical width of the icon or cursor.</blockquote>
+<br><i>height</i> int
+<br><blockquote>The logical height of the icon or cursor.</blockquote>
+<br><i>frame</i> int
+<br><blockquote>The index of the frame to draw, if hIcon identifies an animated cursor. This parameter is ignored if the icon argument does not identify an animated cursor.</blockquote>
+<br><i>brush</i> HBRUSH
+<br><blockquote>A handle to a brush that the system uses for flicker-free drawing, or None.</blockquote>
+<br><i>diFlags</i> int
+<br><blockquote>Additional flags</blockquote>
+</h4>
+<hr>
+<h1>EnumChildWindows</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">EnumChildWindows</span><span style="color:white;">(hwnd: HWND, callback: FunctionType, lParam: AnyType)</span> <span style="color:#f92672">-&gt;</span> NoneType:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Enumerates the child windows that belong to the specified parent window by passing the handle to each child window, in turn, to the specified callback function. The callback function should look like this; ``def callback(hwnd, lparam)``.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window to enumerate, or None</blockquote>
+<br><i>callback</i> FunctionType
+<br><blockquote>Callback function to be called for every child window found with two arguments commonly named ``hWnd, lParam``.</blockquote>
+<br><i>lParam</i> AnyType
+<br><blockquote>[optional] This argument will be passed as the lParam value for the callback function, default is set to None.</blockquote>
+</h4>
+<hr>
+<h1>ExitWindows</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ExitWindows</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Calls the ExitWindowsEx function to log off the interactive user.</h4>
+
+<hr>
+<h1>ExitWindowsEx</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ExitWindowsEx</span><span style="color:white;">(flags: int, reason: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Logs off the interactive user, shuts down the system, or shuts down and restarts the system. It sends the WM_QUERYENDSESSION message to all applications to determine if they can be terminated.</h4>
+<h2>Parameters</h2>
+<h4><i>flags</i> int
+<br><blockquote>The shutdown type.</blockquote>
+<br><i>reason</i> int
+<br><blockquote>The reason for initiating the shutdown.</blockquote>
+</h4>
+<hr>
+<h1>FillRect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">FillRect</span><span style="color:white;">(hdc: HDC, rect: tuple, hbr: HBRUSH)</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Fills a rectangle by using the specified brush.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>rect</i> tuple
+<br><blockquote>Rectangle to be filled; tuple of 4 integers (x1, y1, x2, y2)</blockquote>
+<br><i>hbr</i> HBRUSH
+<br><blockquote>Brush to paint the rectangle with</blockquote>
+</h4>
+<hr>
+<h1>GetClientRect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetClientRect</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> tuple:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the coordinates of a window's client area as a tuple of four integers.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>GetCursorInfo</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetCursorInfo</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> (int, HCURSOR, (int, int)):<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns information about the global cursor.</h4>
+
+<hr>
+<h1>GetCursorPos</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetCursorPos</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the position of the mouse cursor, in a tuple of screen coordinates (x, y).</h4>
+
+<hr>
+<h1>GetDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDC</span><span style="color:white;">(hwnd: int)</span> <span style="color:#f92672">-&gt;</span> HDC:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Retrieves a handle to a device context (DC) for the client area of a specified window or for the entire screen. You can use the returned handle in subsequent GDI functions to draw in the DC.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> int
+<br><blockquote>Handle to the window to retrieve the Device Context from or None</blockquote>
+</h4>
+<hr>
+<h1>GetDesktopWindow</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDesktopWindow</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Retrieves a handle to the desktop window.</h4>
+
+<hr>
+<h1>GetLastError</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetLastError</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Retrieves the last error code caused by a WinAPY function.</h4>
+
+<hr>
+<h1>GetSystemMetrics</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetSystemMetrics</span><span style="color:white;">(int: nIndex)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Retrieves the specified system metric or system configuration setting.</h4>
+<h2>Parameters</h2>
+<h4><i>int</i> nIndex
+<br><blockquote>The system metric or configuration setting to be retrieved.</blockquote>
+</h4>
+<hr>
+<h1>GetTopWindow</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetTopWindow</span><span style="color:white;">(hWnd: HWND)</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Examines the Z order of the child windows associated with the specified parent window and retrieves a handle to the child window at the top of the Z order.</h4>
+<h2>Parameters</h2>
+<h4><i>hWnd</i> HWND
+<br><blockquote>A handle to the parent window whose child windows are to be examined, or None.</blockquote>
+</h4>
+<hr>
+<h1>GetWindowPlacement</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowPlacement</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> (int, int, (int, int), (int, int), (int, int, int, int)):<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the show state and the restored, minimized, and maximized positions of the specified window.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowRect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowRect</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> (int, int, int, int):<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the dimensions of the bounding rectangle of the specified window.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowText</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowText</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the specified windows' title bar text, as an UTF-16 string.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowTextA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowTextA</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the specified windows' title bar text, as an ASCII string.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowTextLength</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowTextLength</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the length of the specified windows' title bar text, measured from an UTF-16 string.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowTextLengthA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowTextLengthA</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the length of the specified windows' title bar text, measured from an ASCII string.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowTextLengthW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowTextLengthW</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the length of the specified windows' title bar text, measured from an UTF-16 string.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>GetWindowTextW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWindowTextW</span><span style="color:white;">(hwnd: HWND)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the specified windows' title bar text, as an UTF-16 string.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+</h4>
+<hr>
+<h1>InitiateSystemShutdown</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">InitiateSystemShutdown</span><span style="color:white;">(machine: str, message: str, displayTime: int, bForceAppsClosed: bool, bRebootAfterShutdown: bool)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Initiates a shutdown and optional restart of the specified computer.</h4>
+<h2>Parameters</h2>
+<h4><i>machine</i> str
+<br><blockquote>The network name of the computer to be shut down, or None to shut down the current machine.</blockquote>
+<br><i>message</i> str
+<br><blockquote>The message to display before shutdown, or None.</blockquote>
+<br><i>displayTime</i> int
+<br><blockquote>The length of time that the shutdown dialog box should be displayed, in seconds.</blockquote>
+<br><i>bForceAppsClosed</i> bool
+<br><blockquote>Whether applications should be force closed or not.</blockquote>
+<br><i>bRebootAfterShutdown</i> bool
+<br><blockquote>Whether the machine should restart or not.</blockquote>
+</h4>
+<hr>
+<h1>InitiateSystemShutdownA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">InitiateSystemShutdownA</span><span style="color:white;">(machine: str, message: str, displayTime: int, bForceAppsClosed: bool, bRebootAfterShutdown: bool)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Initiates a shutdown and optional restart of the specified computer.</h4>
+<h2>Parameters</h2>
+<h4><i>machine</i> str
+<br><blockquote>The network name of the computer to be shut down, or None to shut down the current machine.</blockquote>
+<br><i>message</i> str
+<br><blockquote>The message to display before shutdown, or None.</blockquote>
+<br><i>displayTime</i> int
+<br><blockquote>The length of time that the shutdown dialog box should be displayed, in seconds.</blockquote>
+<br><i>bForceAppsClosed</i> bool
+<br><blockquote>Whether applications should be force closed or not.</blockquote>
+<br><i>bRebootAfterShutdown</i> bool
+<br><blockquote>Whether the machine should restart or not.</blockquote>
+</h4>
+<hr>
+<h1>InitiateSystemShutdownW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">InitiateSystemShutdownW</span><span style="color:white;">(machine: str, message: str, displayTime: int, bForceAppsClosed: bool, bRebootAfterShutdown: bool)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Initiates a shutdown and optional restart of the specified computer.</h4>
+<h2>Parameters</h2>
+<h4><i>machine</i> str
+<br><blockquote>The network name of the computer to be shut down, or None to shut down the current machine.</blockquote>
+<br><i>message</i> str
+<br><blockquote>The message to display before shutdown, or None.</blockquote>
+<br><i>displayTime</i> int
+<br><blockquote>The length of time that the shutdown dialog box should be displayed, in seconds.</blockquote>
+<br><i>bForceAppsClosed</i> bool
+<br><blockquote>Whether applications should be force closed or not.</blockquote>
+<br><i>bRebootAfterShutdown</i> bool
+<br><blockquote>Whether the machine should restart or not.</blockquote>
+</h4>
+<hr>
+<h1>InvalidateRect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">InvalidateRect</span><span style="color:white;">(hwnd: HWND, rect: tuple, erase: bool)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns a handle to one of the stock pens, brushes, fonts, or palettes.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window, or None</blockquote>
+<br><i>rect</i> tuple
+<br><blockquote>Rectangle with coordinates to be redrawn (x1, y1, x2, y2), or None</blockquote>
+<br><i>erase</i> bool
+<br><blockquote>Whether the background within the update region is to be erased when the update region is processed.</blockquote>
+</h4>
+<hr>
+<h1>LoadCursor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadCursor</span><span style="color:white;">(hInstance: HINSTANCE, cursor: int)</span> <span style="color:#f92672">-&gt;</span> HCURSOR:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads the specified cursor resource from the executable (.EXE) file associated with an application instance.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> HINSTANCE
+<br><blockquote>A handle to an instance of the module whose executable file contains the cursor to be loaded, or None.</blockquote>
+<br><i>cursor</i> int
+<br><blockquote>The name of the cursor resource to be loaded.</blockquote>
+</h4>
+<hr>
+<h1>LoadCursorA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadCursorA</span><span style="color:white;">(hInstance: HINSTANCE, cursor: int)</span> <span style="color:#f92672">-&gt;</span> HCURSOR:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads the specified cursor resource from the executable (.EXE) file associated with an application instance.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> HINSTANCE
+<br><blockquote>A handle to an instance of the module whose executable file contains the cursor to be loaded, or None.</blockquote>
+<br><i>cursor</i> int
+<br><blockquote>The name of the cursor resource to be loaded.</blockquote>
+</h4>
+<hr>
+<h1>LoadCursorFromFile</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadCursorFromFile</span><span style="color:white;">(fName: str)</span> <span style="color:#f92672">-&gt;</span> HCURSOR:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a cursor based on data contained in a file.</h4>
+<h2>Parameters</h2>
+<h4><i>fName</i> str
+<br><blockquote>The source of the file data to be used to create the cursor. The data in the file must be in either .CUR or .ANI format.</blockquote>
+</h4>
+<hr>
+<h1>LoadCursorFromFileA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadCursorFromFileA</span><span style="color:white;">(fName: str)</span> <span style="color:#f92672">-&gt;</span> HCURSOR:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a cursor based on data contained in a file.</h4>
+<h2>Parameters</h2>
+<h4><i>fName</i> str
+<br><blockquote>The source of the file data to be used to create the cursor. The data in the file must be in either .CUR or .ANI format.</blockquote>
+</h4>
+<hr>
+<h1>LoadCursorFromFileW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadCursorFromFileW</span><span style="color:white;">(fName: str)</span> <span style="color:#f92672">-&gt;</span> HCURSOR:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a cursor based on data contained in a file.</h4>
+<h2>Parameters</h2>
+<h4><i>fName</i> str
+<br><blockquote>The source of the file data to be used to create the cursor. The data in the file must be in either .CUR or .ANI format.</blockquote>
+</h4>
+<hr>
+<h1>LoadCursorW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadCursorW</span><span style="color:white;">(hInstance: HINSTANCE, cursor: int)</span> <span style="color:#f92672">-&gt;</span> HCURSOR:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads the specified cursor resource from the executable (.EXE) file associated with an application instance.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> HINSTANCE
+<br><blockquote>A handle to an instance of the module whose executable file contains the cursor to be loaded, or None.</blockquote>
+<br><i>cursor</i> int
+<br><blockquote>The name of the cursor resource to be loaded.</blockquote>
+</h4>
+<hr>
+<h1>LoadIcon</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadIcon</span><span style="color:white;">(hInstance: int, IconName: int)</span> <span style="color:#f92672">-&gt;</span> HICON:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads the specified icon resource from the executable (.exe) file associated with an application instance or a predefined icon.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> int
+<br><blockquote>Handle to the instance whose executable file contains the icon to be loaded, or None.</blockquote>
+<br><i>IconName</i> int
+<br><blockquote>The icon to be loaded, parsed as an UTF-16 string from an integer</blockquote>
+</h4>
+<hr>
+<h1>LoadIconA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadIconA</span><span style="color:white;">(hInstance: int, IconName: int)</span> <span style="color:#f92672">-&gt;</span> HICON:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads the specified icon resource from the executable (.exe) file associated with an application instance or a predefined icon.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> int
+<br><blockquote>Handle to the instance whose executable file contains the icon to be loaded, or None.</blockquote>
+<br><i>IconName</i> int
+<br><blockquote>The icon to be loaded, parsed as an ASCII string from an integer</blockquote>
+</h4>
+<hr>
+<h1>LoadIconW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadIconW</span><span style="color:white;">(hInstance: int, IconName: int)</span> <span style="color:#f92672">-&gt;</span> HICON:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads the specified icon resource from the executable (.exe) file associated with an application instance or a predefined icon.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> int
+<br><blockquote>Handle to the instance whose executable file contains the icon to be loaded, or None.</blockquote>
+<br><i>IconName</i> int
+<br><blockquote>The icon to be loaded, parsed as an UTF-16 string from an integer</blockquote>
+</h4>
+<hr>
+<h1>LoadImage</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadImage</span><span style="color:white;">(hInstance: HINSTANCE, name: int/str, type: int, width: int, height: int, fLoad: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads an icon, cursor, animated cursor, or bitmap.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> HINSTANCE
+<br><blockquote>A handle to the module of either a DLL or executable (.exe) that contains the image to be loaded, or None.</blockquote>
+<br><i>name</i> int/str
+<br><blockquote>The image to be loaded.</blockquote>
+<br><i>type</i> int
+<br><blockquote>The type of image to be loaded.</blockquote>
+<br><i>width</i> int
+<br><blockquote>The width, in pixels, of the icon or cursor.</blockquote>
+<br><i>height</i> int
+<br><blockquote>The height, in pixels, of the icon or cursor.</blockquote>
+<br><i>fLoad</i> int
+<br><blockquote>Any of the following values; ``LR_CREATEDIBSECTION, LR_DEFAULTCOLOR, LR_DEFAULTSIZE, LR_LOADFROMFILE, LR_LOADMAP3DCOLORS, LR_LOADTRANSPARENT, LR_MONOCHROME, LR_SHARED or LR_VGACOLOR``</blockquote>
+</h4>
+<hr>
+<h1>LoadImageA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadImageA</span><span style="color:white;">(hInstance: HINSTANCE, name: int/str, type: int, width: int, height: int, fLoad: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads an icon, cursor, animated cursor, or bitmap.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> HINSTANCE
+<br><blockquote>A handle to the module of either a DLL or executable (.exe) that contains the image to be loaded, or None.</blockquote>
+<br><i>name</i> int/str
+<br><blockquote>The image to be loaded.</blockquote>
+<br><i>type</i> int
+<br><blockquote>The type of image to be loaded.</blockquote>
+<br><i>width</i> int
+<br><blockquote>The width, in pixels, of the icon or cursor.</blockquote>
+<br><i>height</i> int
+<br><blockquote>The height, in pixels, of the icon or cursor.</blockquote>
+<br><i>fLoad</i> int
+<br><blockquote>Any of the following values; ``LR_CREATEDIBSECTION, LR_DEFAULTCOLOR, LR_DEFAULTSIZE, LR_LOADFROMFILE, LR_LOADMAP3DCOLORS, LR_LOADTRANSPARENT, LR_MONOCHROME, LR_SHARED or LR_VGACOLOR``</blockquote>
+</h4>
+<hr>
+<h1>LoadImageW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LoadImageW</span><span style="color:white;">(hInstance: HINSTANCE, name: int/str, type: int, width: int, height: int, fLoad: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Loads an icon, cursor, animated cursor, or bitmap.</h4>
+<h2>Parameters</h2>
+<h4><i>hInstance</i> HINSTANCE
+<br><blockquote>A handle to the module of either a DLL or executable (.exe) that contains the image to be loaded, or None.</blockquote>
+<br><i>name</i> int/str
+<br><blockquote>The image to be loaded.</blockquote>
+<br><i>type</i> int
+<br><blockquote>The type of image to be loaded.</blockquote>
+<br><i>width</i> int
+<br><blockquote>The width, in pixels, of the icon or cursor.</blockquote>
+<br><i>height</i> int
+<br><blockquote>The height, in pixels, of the icon or cursor.</blockquote>
+<br><i>fLoad</i> int
+<br><blockquote>Any of the following values; ``LR_CREATEDIBSECTION, LR_DEFAULTCOLOR, LR_DEFAULTSIZE, LR_LOADFROMFILE, LR_LOADMAP3DCOLORS, LR_LOADTRANSPARENT, LR_MONOCHROME, LR_SHARED or LR_VGACOLOR``</blockquote>
+</h4>
+<hr>
+<h1>MessageBeep</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBeep</span><span style="color:white;">(sound: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Plays a waveform sound. The waveform sound for each sound type is identified by an entry in the registry.</h4>
+<h2>Parameters</h2>
+<h4><i>sound</i> int
+<br><blockquote>The sound to be played. The sounds are set by the user through the Sound control panel application, and then stored in the registry. Any of the Message Box icon values or 0xFFFFFFFF.</blockquote>
+</h4>
+<hr>
+<h1>MessageBox</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBox</span><span style="color:white;">(hWnd: HWND, msg: str, title: str, type: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Displays a modal dialog box that contains a system icon, a set of buttons, and a brief application-specific message, such as status or error information. The message box returns an integer value that indicates which button the user clicked.</h4>
+<h2>Parameters</h2>
+<h4><i>hWnd</i> HWND
+<br><blockquote>The parent window of the Message Box, or None.</blockquote>
+<br><i>msg</i> str
+<br><blockquote>The message to be displayed, as an UTF-16 string.</blockquote>
+<br><i>title</i> str
+<br><blockquote>The dialog box title, as an UTF-16 string.</blockquote>
+<br><i>type</i> int
+<br><blockquote>The contents and behavior of the dialog box.</blockquote>
+</h4>
+<hr>
+<h1>MessageBoxA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBoxA</span><span style="color:white;">(hWnd: HWND, msg: str, title: str, type: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Displays a modal dialog box that contains a system icon, a set of buttons, and a brief application-specific message, such as status or error information. The message box returns an integer value that indicates which button the user clicked.</h4>
+<h2>Parameters</h2>
+<h4><i>hWnd</i> HWND
+<br><blockquote>The parent window of the Message Box, or None.</blockquote>
+<br><i>msg</i> str
+<br><blockquote>The message to be displayed, as an ASCII string.</blockquote>
+<br><i>title</i> str
+<br><blockquote>The dialog box title, as an ASCII string.</blockquote>
+<br><i>type</i> int
+<br><blockquote>The contents and behavior of the dialog box.</blockquote>
+</h4>
+<hr>
+<h1>MessageBoxW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBoxW</span><span style="color:white;">(hWnd: HWND, msg: str, title: str, type: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Displays a modal dialog box that contains a system icon, a set of buttons, and a brief application-specific message, such as status or error information. The message box returns an integer value that indicates which button the user clicked.</h4>
+<h2>Parameters</h2>
+<h4><i>hWnd</i> HWND
+<br><blockquote>The parent window of the Message Box, or None.</blockquote>
+<br><i>msg</i> str
+<br><blockquote>The message to be displayed, as an UTF-16 string.</blockquote>
+<br><i>title</i> str
+<br><blockquote>The dialog box title, as an UTF-16 string.</blockquote>
+<br><i>type</i> int
+<br><blockquote>The contents and behavior of the dialog box.</blockquote>
+</h4>
+<hr>
+<h1>RedrawWindow</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">RedrawWindow</span><span style="color:white;">(hwnd: HWND, rect: tuple, region: HRGN, flags: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Redraws a portion or the entire specified window.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window, or None</blockquote>
+<br><i>rect</i> tuple
+<br><blockquote>Rectangle with coordinates to be redrawn (x1, y1, x2, y2), or None</blockquote>
+<br><i>region</i> HRGN
+<br><blockquote>Handle to a region to be redrawn, or None</blockquote>
+<br><i>flags</i> int
+<br><blockquote>[optional] Redrawing flags. Default are RDW_ALLCHILDREN, RDW_ERASE and RDW_INVALIDATE</blockquote>
+</h4>
+<hr>
+<h1>ReleaseDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ReleaseDC</span><span style="color:white;">(hwnd: HWND, hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Releases a device context, making it available to other applications.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window to be released</blockquote>
+<br><i>hdc</i> HDC
+<br><blockquote>A handle to a device context to be released</blockquote>
+</h4>
+<hr>
+<h1>SetCursorPos</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetCursorPos</span><span style="color:white;">(x: int, y: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Moves the cursor to the specified screen coordinates.</h4>
+<h2>Parameters</h2>
+<h4><i>x</i> int
+<br><blockquote>The new X-coordinate of the cursor</blockquote>
+<br><i>y</i> int
+<br><blockquote>The new Y-coordinate of the cursor</blockquote>
+</h4>
+<hr>
+<h1>ShowWindow</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ShowWindow</span><span style="color:white;">(hwnd: HWND, nCmdShow: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the specified window's show state.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+<br><i>nCmdShow</i> int
+<br><blockquote>The new show state.</blockquote>
+</h4>
+<hr>
+<h1>Sleep</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Sleep</span><span style="color:white;">(dwMilliseconds: int)</span> <span style="color:#f92672">-&gt;</span> NoneType:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sleeps for the specified duration, in milliseconds.</h4>
+<h2>Parameters</h2>
+<h4><i>dwMilliseconds</i> int
+<br><blockquote>The amount to wait in milliseconds</blockquote>
+</h4>
+<hr>
+<h1>SwitchToThisWindow</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SwitchToThisWindow</span><span style="color:white;">(hwnd: HWND, bAltTab: bool)</span> <span style="color:#f92672">-&gt;</span> NoneType:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>[This function is not made for general use. It can be unavailable in future versions of Windows.] Switches focus to the specified window and brings it to the foreground.</h4>
+<h2>Parameters</h2>
+<h4><i>hwnd</i> HWND
+<br><blockquote>Handle to a window</blockquote>
+<br><i>bAltTab</i> bool
+<br><blockquote>Specifies whether the window is being switched to using the Alt/Ctl+Tab key sequence or not.</blockquote>
+</h4>
+<hr>
+<h1>WindowFromDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">WindowFromDC</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns a handle to the window associated with the specified display device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>WindowFromPhysicalPoint</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">WindowFromPhysicalPoint</span><span style="color:white;">(point: tuple)</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns a handle to the window that contains the specified physical point.</h4>
+<h2>Parameters</h2>
+<h4><i>point</i> tuple
+<br><blockquote>The point to be checked, as a tuple of two integers (x, y).</blockquote>
+</h4>
+<hr>
+<h1>WindowFromPoint</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">WindowFromPoint</span><span style="color:white;">(point: tuple)</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns a handle to the window that contains the specified point. Returns a handle to the window if it exists at the specified point, otherwise None.</h4>
+<h2>Parameters</h2>
+<h4><i>point</i> tuple
+<br><blockquote>The point to be checked, as a tuple of two integers (x, y).</blockquote>
+</h4>
+<hr>
+<h1>rand</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">rand</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Generates a random integer.</h4>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+pre {
+    display: inline-block;
+}
+
+body {
+    font-family: Comfortaa;
+    font-size: 125%;
+    color: white;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+
+hr {
+    border: 3px solid white;
+    background-color: white;
+    border-radius: 5px;
+}
+h4 {
+    font-weight: normal;
+}
+i {
+    font-weight: bold;
+}
+input {
+    border-radius: 5px;
+    font-family: Comfortaa;
+    transform: scale(2.0) translate(-30%);
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 200px;
+}
+div.top {
+    background-color: rgb(41, 41, 41);
+    position: sticky;
+    top: 0;
+}
+div.container {
+    margin-left: 7px;
+}
+h2.fh {
+    line-height: 0;
+    position: absolute;
+    font-size: 2.5rem;
+    top: -7px;
+    left: 5px;
+}
+a {
+    color: white;
+    transition: 0.3s;
+    text-decoration: none;
+}
+a:hover {
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+<h2 class="fh"><a href="documentation.html">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
+<br><br>
+<hr>
+</div>
+
+<script type="text/javascript">
+var locationText = 0;
+function updateRows(event) {
+    let el = document.getElementById("search");
+    let functions = document.getElementsByTagName("h1");
+    let value = el.value.toLowerCase();
+    let isEnter = event.code == "Enter";
+
+    if (event.code == "Escape") {
+        el.blur();
+        el.value = "";
+        return;
+    }
+
+    if (isEnter) locationText++;
+    else locationText = 0;
+
+    let findCount = 0;
+
+    for (var i = 0; i < functions.length; i++) {
+        if (functions[i].innerText.toLowerCase().includes(value)) {
+            if (locationText == findCount) {
+                functions[i].scrollIntoView();
+                window.scrollBy(0, -100);
+                return;
+            }
+            findCount++;
+        }
+    }
+}
+document.getElementById("search").addEventListener("keyup", updateRows);
+</script>
+
+<div class="container">
+
+<h1>AngleArc</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">AngleArc</span><span style="color:white;">(hdc: HDC, x: int, y: int, r: int, StartAngle: float, SweepAngle: float)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a line segment and an arc.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>X coordinate of the center of the circle</blockquote>
+<br><i>y</i> int
+<br><blockquote>Y coordinate of the center of the circle</blockquote>
+<br><i>r</i> int
+<br><blockquote>The radius of the circle</blockquote>
+<br><i>StartAngle</i> float
+<br><blockquote>The start angle in degrees, relative to the x-axis</blockquote>
+<br><i>SweepAngle</i> float
+<br><blockquote>The sweep angle in degrees, relative to the starting angle</blockquote>
+</h4>
+<hr>
+<h1>Arc</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Arc</span><span style="color:white;">(hdc: HDC, x1: int, y1: int, x2: int, y2: int, x3: int, y3: int, x4: int, y4: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws an elliptical arc.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>x1</i> int
+<br><blockquote>X coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>y1</i> int
+<br><blockquote>Y coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>x2</i> int
+<br><blockquote>X coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>y2</i> int
+<br><blockquote>Y coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>x3</i> int
+<br><blockquote>X coordinate of the ending point of the radial line defining the starting point of the arc.</blockquote>
+<br><i>y3</i> int
+<br><blockquote>Y coordinate of the ending point of the radial line defining the starting point of the arc.</blockquote>
+<br><i>x4</i> int
+<br><blockquote>X coordinate of the ending point of the radial line defining the ending point of the arc.</blockquote>
+<br><i>y4</i> int
+<br><blockquote>Y coordinate of the ending point of the radial line defining the ending point of the arc.</blockquote>
+</h4>
+<hr>
+<h1>ArcTo</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ArcTo</span><span style="color:white;">(hdc: HDC, left: int, top: int, right: int, bottom: int, xr1: int, yr1: int, xr2: int, yr2: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws an elliptical arc.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>left</i> int
+<br><blockquote>X coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>top</i> int
+<br><blockquote>Y coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>right</i> int
+<br><blockquote>X coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>bottom</i> int
+<br><blockquote>Y coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>xr1</i> int
+<br><blockquote>X coordinate of the endpoint of the radial defining the starting point of the arc</blockquote>
+<br><i>yr1</i> int
+<br><blockquote>Y coordinate of the endpoint of the radial defining the starting point of the arc</blockquote>
+<br><i>xr2</i> int
+<br><blockquote>X coordinate of the endpoint of the radial defining the ending point of the arc</blockquote>
+<br><i>yr2</i> int
+<br><blockquote>Y coordinate of the endpoint of the radial defining the ending point of the arc</blockquote>
+</h4>
+<hr>
+<h1>BeginPath</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">BeginPath</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Opens a path bracket in the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>BitBlt</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">BitBlt</span><span style="color:white;">(HDC: hdcDst, int: x, int: y, int: cx, int: cy, HDC: hdcSrc, int: x1, int: y1, int: rop)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Bit-block transfer of the color data from a rectangle of pixels from hdcSrc into hdcDst using the specified raster operation.</h4>
+<h2>Parameters</h2>
+<h4><i>HDC</i> hdcDst
+<br><blockquote>Handle to the destination device context</blockquote>
+<br><i>int</i> x
+<br><blockquote>Rectangles left offset</blockquote>
+<br><i>int</i> y
+<br><blockquote>Rectangles top offset</blockquote>
+<br><i>int</i> cx
+<br><blockquote>Rectangles right offset</blockquote>
+<br><i>int</i> cy
+<br><blockquote>Rectangles bottom offset</blockquote>
+<br><i>HDC</i> hdcSrc
+<br><blockquote>Handle to the source device context</blockquote>
+<br><i>int</i> x1
+<br><blockquote>Source device context's rectangles left</blockquote>
+<br><i>int</i> y1
+<br><blockquote>Source device context's rectangles top</blockquote>
+<br><i>int</i> rop
+<br><blockquote>The raster operation code</blockquote>
+</h4>
+<hr>
+<h1>CancelDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CancelDC</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Cancels any pending operation on the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>A handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>Chord</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Chord</span><span style="color:white;">(hdc: HDC, x1: int, y1: int, x2: int, y2: int, x3: int, y3: int, x4: int, y4: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a chord outlined by using the current pen and filled by using the current brush.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>x1</i> int
+<br><blockquote>X coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>y1</i> int
+<br><blockquote>Y coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>x2</i> int
+<br><blockquote>X coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>y2</i> int
+<br><blockquote>Y coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>x3</i> int
+<br><blockquote>X coordinate of the endpoint of the radial defining the beginning of the chord</blockquote>
+<br><i>y3</i> int
+<br><blockquote>Y coordinate of the endpoint of the radial defining the beginning of the chord</blockquote>
+<br><i>x4</i> int
+<br><blockquote>X coordinate of the endpoint of the radial defining the end of the chord</blockquote>
+<br><i>y4</i> int
+<br><blockquote>Y coordinate of the endpoint of the radial defining the end of the chord</blockquote>
+</h4>
+<hr>
+<h1>CreateCompatibleBitmap</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateCompatibleBitmap</span><span style="color:white;">(hdc: HDC, cx: int, cy: int)</span> <span style="color:#f92672">-&gt;</span> HBITMAP:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns a bitmap compatible with the device that is associated with the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>A handle to a device context</blockquote>
+<br><i>cx</i> int
+<br><blockquote>The bitmap width, in pixels</blockquote>
+<br><i>cy</i> int
+<br><blockquote>The bitmap height, in pixels</blockquote>
+</h4>
+<hr>
+<h1>CreateCompatibleDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateCompatibleDC</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> HDC:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a memory device context compatible with the specified device.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context, or None</blockquote>
+</h4>
+<hr>
+<h1>CreateEllipticRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateEllipticRgn</span><span style="color:white;">(x1: int, y1: int, x2: int, y2: int)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates an elliptical region.</h4>
+<h2>Parameters</h2>
+<h4><i>x1</i> int
+<br><blockquote>X coordinate of the upper-left corner of the bounding rectangle of the ellipse</blockquote>
+<br><i>y1</i> int
+<br><blockquote>Y coordinate of the upper-left corner of the bounding rectangle of the ellipse</blockquote>
+<br><i>x2</i> int
+<br><blockquote>X coordinate of the lower-right corner of the bounding rectangle of the ellipse</blockquote>
+<br><i>y2</i> int
+<br><blockquote>Y coordinate of the lower-right corner of the bounding rectangle of the ellipse</blockquote>
+</h4>
+<hr>
+<h1>CreateEllipticRgnIndirect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateEllipticRgnIndirect</span><span style="color:white;">(rgnTuple: tuple)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates an elliptical region from a tuple.</h4>
+<h2>Parameters</h2>
+<h4><i>rgnTuple</i> tuple
+<br><blockquote>A tuple of 4 integers containing the X coordinate of the upper-left corner of the bounding rectangle of the ellipse, Y coordinate of the upper-left corner of the bounding rectangle of the ellipse, X coordinate of the lower-right corner of the bounding rectangle of the ellipse and Y coordinate of the lower-right corner of the bounding rectangle of the ellipse.</blockquote>
+</h4>
+<hr>
+<h1>CreateHatchBrush</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateHatchBrush</span><span style="color:white;">(iHatch: int, color: int)</span> <span style="color:#f92672">-&gt;</span> HBRUSH:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a logical brush that has the specified hatch pattern and color.</h4>
+<h2>Parameters</h2>
+<h4><i>iHatch</i> int
+<br><blockquote>The hatch style of the brush.</blockquote>
+<br><i>color</i> int
+<br><blockquote>The foreground color of the brush that is used for the hatches. To create a color value, use the RGB function.</blockquote>
+</h4>
+<hr>
+<h1>CreatePen</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreatePen</span><span style="color:white;">(iStyle: int, cWidth: int, color: int)</span> <span style="color:#f92672">-&gt;</span> HPEN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a logical pen that has the specified style, width, and color.</h4>
+<h2>Parameters</h2>
+<h4><i>iStyle</i> int
+<br><blockquote>The pen style. It can be any one of the following values; ``PS_SOLID, PS_DASH, PS_DOT, PS_DASHDOT, PS_DASHDOTDOT, PS_NULL or PS_INSIDEFRAME``</blockquote>
+<br><i>cWidth</i> int
+<br><blockquote>The width of the pen</blockquote>
+<br><i>color</i> int
+<br><blockquote>The color of the pen, commonly returned from the RGB function</blockquote>
+</h4>
+<hr>
+<h1>CreatePenIndirect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreatePenIndirect</span><span style="color:white;">(penProperties: tuple)</span> <span style="color:#f92672">-&gt;</span> HPEN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a logical pen that has the specified style, width, and color from a tuple.</h4>
+<h2>Parameters</h2>
+<h4><i>penProperties</i> tuple
+<br><blockquote>The touple should contain the pen style, the width of the pen as a tuple of two integers, and the color of the pen.</blockquote>
+</h4>
+<hr>
+<h1>CreatePolygonRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreatePolygonRgn</span><span style="color:white;">(points: tuple, mode: int)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a polygon region using the specified vertices.</h4>
+<h2>Parameters</h2>
+<h4><i>points</i> tuple
+<br><blockquote>Tuple of coordinates to be made into a polygon, example ((100, 100), (200, 100), (150, 200)) for a triangle</blockquote>
+<br><i>mode</i> int
+<br><blockquote>ALTERNATE or WINDING</blockquote>
+</h4>
+<hr>
+<h1>CreateRectRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateRectRgn</span><span style="color:white;">(x1: int, y1: int, x2: int, y2: int)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a rectangular region.</h4>
+<h2>Parameters</h2>
+<h4><i>x1</i> int
+<br><blockquote>X coordinate of the upper-left corner of the bounding rectangle of the rectangle</blockquote>
+<br><i>y1</i> int
+<br><blockquote>Y coordinate of the upper-left corner of the bounding rectangle of the rectangle</blockquote>
+<br><i>x2</i> int
+<br><blockquote>X coordinate of the lower-right corner of the bounding rectangle of the rectangle</blockquote>
+<br><i>y2</i> int
+<br><blockquote>Y coordinate of the lower-right corner of the bounding rectangle of the rectangle.</blockquote>
+</h4>
+<hr>
+<h1>CreateRectRgnIndirect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateRectRgnIndirect</span><span style="color:white;">(rgnTuple: tuple)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a rectangular region from a tuple.</h4>
+<h2>Parameters</h2>
+<h4><i>rgnTuple</i> tuple
+<br><blockquote>A tuple of 4 integers containing the X coordinate of the upper-left corner of the bounding rectangle of the rectangle, Y coordinate of the upper-left corner of the bounding rectangle of the rectangle, X coordinate of the lower-right corner of the bounding rectangle of the rectangle and Y coordinate of the lower-right corner of the bounding rectangle of the rectangle.</blockquote>
+</h4>
+<hr>
+<h1>CreateRoundRectRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateRoundRectRgn</span><span style="color:white;">(x1: int, y1: int, x2: int, y2: int, w: int, h: int)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a rounded rectangular region.</h4>
+<h2>Parameters</h2>
+<h4><i>x1</i> int
+<br><blockquote>X coordinate of the upper-left rectangle.</blockquote>
+<br><i>y1</i> int
+<br><blockquote>Y coordinate of the upper-left rectangle.</blockquote>
+<br><i>x2</i> int
+<br><blockquote>X coordinate of the down-right rectangle.</blockquote>
+<br><i>y2</i> int
+<br><blockquote>Y coordinate of the down-right rectangle.</blockquote>
+<br><i>w</i> int
+<br><blockquote>Horizontal strength of the roundness.</blockquote>
+<br><i>h</i> int
+<br><blockquote>Vertical strength of the roundness.</blockquote>
+</h4>
+<hr>
+<h1>CreateSolidBrush</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateSolidBrush</span><span style="color:white;">(color: int)</span> <span style="color:#f92672">-&gt;</span> HBRUSH:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a new HBRUSH with the specified color.</h4>
+<h2>Parameters</h2>
+<h4><i>color</i> int
+<br><blockquote>The color of the brush</blockquote>
+</h4>
+<hr>
+<h1>DeleteDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DeleteDC</span><span style="color:white;">(HDC: hdc)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Frees up memory allocated by the specified device context and closes its handle.</h4>
+<h2>Parameters</h2>
+<h4><i>HDC</i> hdc
+<br><blockquote>Handle to a device context to deallocate and close.</blockquote>
+</h4>
+<hr>
+<h1>DeleteObject</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DeleteObject</span><span style="color:white;">(object: HGDIOBJ)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Deletes the object and frees its memory.</h4>
+<h2>Parameters</h2>
+<h4><i>object</i> HGDIOBJ
+<br><blockquote>The object to delete, can be a brush, a pen etc.</blockquote>
+</h4>
+<hr>
+<h1>Ellipse</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Ellipse</span><span style="color:white;">(left: int, top: int, right: int, bottom: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws an ellipse using the current brush on the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>left</i> int
+<br><blockquote>Left offset of ellipse</blockquote>
+<br><i>top</i> int
+<br><blockquote>Top offset of ellipse</blockquote>
+<br><i>right</i> int
+<br><blockquote>Right offset of ellipse</blockquote>
+<br><i>bottom</i> int
+<br><blockquote>Bottom offset of ellipse</blockquote>
+</h4>
+<hr>
+<h1>EndPath</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">EndPath</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Closes a path bracket and selects the path defined by the bracket into the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>EqualRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">EqualRgn</span><span style="color:white;">(rgn1: HRGN, rgn2: HRGN)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Checks whether two regions are equal to each other.</h4>
+<h2>Parameters</h2>
+<h4><i>rgn1</i> HRGN
+<br><blockquote>The first region to be compared</blockquote>
+<br><i>rgn2</i> HRGN
+<br><blockquote>The second region to be compared</blockquote>
+</h4>
+<hr>
+<h1>ExtCreatePen</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ExtCreatePen</span><span style="color:white;">(style: int, cWidth: int, logBrush: tuple, pstyle: tuple)</span> <span style="color:#f92672">-&gt;</span> HPEN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a logical cosmetic or geometric pen that has the specified style, width, and brush attributes.</h4>
+<h2>Parameters</h2>
+<h4><i>style</i> int
+<br><blockquote>The type can be ``PS_GEOMETRIC or PS_COSMETIC``, combine it with the OR operator with the style that can be any of the following values; ``PS_ALTERNATE, PS_SOLID, PS_DASH, PS_DOT, PS_DASHDOT, PS_DASHDOTDOT, PS_NULL, PS_USERSTYLE, PS_INSIDEFRAME``, combine it with the OR operator if the pen type is geometric with any of the following values (end cap); ``PS_ENDCAP_ROUND, PS_ENDCAP_SQUARE, PS_ENDCAP_FLAT``, if it is geometrical you should also combine it with the OR operator with any of the following values (join); ``PS_JOIN_BEVEL, PS_JOIN_MITER, PS_JOIN_ROUND``.</blockquote>
+<br><i>cWidth</i> int
+<br><blockquote>The width of the pen. If the pen type is ``PS_COSMETIC`` it should be set to 1.</blockquote>
+<br><i>logBrush</i> tuple
+<br><blockquote>Tuple containing 3 elements; style, color and a hatch brush.</blockquote>
+<br><i>pstyle</i> tuple
+<br><blockquote>Tuple of maximum 16 ints that specifies an user-defined style, or None.</blockquote>
+</h4>
+<hr>
+<h1>FillRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">FillRgn</span><span style="color:white;">(hdc: HDC, rgn: HRGN, brush: HBRUSH)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Fills the specified region using the given brush.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>rgn</i> HRGN
+<br><blockquote>Region to be filled</blockquote>
+<br><i>brush</i> HBRUSH
+<br><blockquote>Brush to paint the region with</blockquote>
+</h4>
+<hr>
+<h1>FlattenPath</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">FlattenPath</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Transforms any curves in the path that is selected into the current device context, turning curves into sequences of lines.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>FrameRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">FrameRgn</span><span style="color:white;">(hdc: HDC, rgn: HRGN, hbr: HBRUSH, w: int, h: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a border around the specified region by using the specified brush.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>rgn</i> HRGN
+<br><blockquote>Handle to a region to be drawn a border around it</blockquote>
+<br><i>hbr</i> HBRUSH
+<br><blockquote>Brush to paint the border with</blockquote>
+<br><i>w</i> int
+<br><blockquote>Width of vertical brush strokes.</blockquote>
+<br><i>h</i> int
+<br><blockquote>Height of horizontal brush strokes.</blockquote>
+</h4>
+<hr>
+<h1>GdiGetBatchLimit</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GdiGetBatchLimit</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the maximum number of function calls that can be accumulated in the calling thread's current batch.</h4>
+
+<hr>
+<h1>GdiSetBatchLimit</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GdiSetBatchLimit</span><span style="color:white;">(val: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the maximum number of function calls that can be accumulated in the calling thread's current batch.</h4>
+<h2>Parameters</h2>
+<h4><i>val</i> int
+<br><blockquote>The number of maxiumum number of function calls that can be accumulated in the calling thread's current batch</blockquote>
+</h4>
+<hr>
+<h1>GetArcDirection</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetArcDirection</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the current arc direction for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>GetBValue</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetBValue</span><span style="color:white;">(color: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Get the B value from the specified color.</h4>
+<h2>Parameters</h2>
+<h4><i>color</i> int
+<br><blockquote>Color to retrieve the B value from</blockquote>
+</h4>
+<hr>
+<h1>GetBkColor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetBkColor</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the current background mix mode for a specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>GetBkMode</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetBkMode</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the current background mix mode for a specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>GetDCBrushColor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDCBrushColor</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the current brush color for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+</h4>
+<hr>
+<h1>GetDCOrgEx</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDCOrgEx</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> (int, int):<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the final translation origin for a specified device context as a point.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+</h4>
+<hr>
+<h1>GetDCPenColor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDCPenColor</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the current pen color for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+</h4>
+<hr>
+<h1>GetDeviceCaps</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDeviceCaps</span><span style="color:white;">(hdc: HDC, index: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns device-specific information for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>index</i> int
+<br><blockquote>The item to be returned</blockquote>
+</h4>
+<hr>
+<h1>GetGValue</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetGValue</span><span style="color:white;">(color: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Get the G value from the specified color.</h4>
+<h2>Parameters</h2>
+<h4><i>color</i> int
+<br><blockquote>Color to retrieve the G value from</blockquote>
+</h4>
+<hr>
+<h1>GetLastError</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetLastError</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Retrieves the last error code caused by a WinAPY function.</h4>
+
+<hr>
+<h1>GetObjectType</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetObjectType</span><span style="color:white;">(h: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Retrieves the type of the specified object.</h4>
+<h2>Parameters</h2>
+<h4><i>h</i> int
+<br><blockquote>Handle to the object</blockquote>
+</h4>
+<hr>
+<h1>GetPixel</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetPixel</span><span style="color:white;">(hdc: HDC, x: int, y: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Gets the specified pixel's color on a device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>The device context to retrieve the pixel of.</blockquote>
+<br><i>x</i> int
+<br><blockquote>The x coordinate of the pixel</blockquote>
+<br><i>y</i> int
+<br><blockquote>The y coordinate of the pixel</blockquote>
+</h4>
+<hr>
+<h1>GetRGBValues</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetRGBValues</span><span style="color:white;">(color: int)</span> <span style="color:#f92672">-&gt;</span> tuple:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the RGB values of a color, as a tuple of three integers.</h4>
+<h2>Parameters</h2>
+<h4><i>color</i> int
+<br><blockquote>Color to retrieve the RGB values from</blockquote>
+</h4>
+<hr>
+<h1>GetRValue</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetRValue</span><span style="color:white;">(color: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Get the R value from the specified color.</h4>
+<h2>Parameters</h2>
+<h4><i>color</i> int
+<br><blockquote>Color to retrieve the R value from</blockquote>
+</h4>
+<hr>
+<h1>GetStockObject</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetStockObject</span><span style="color:white;">(i: int)</span> <span style="color:#f92672">-&gt;</span> HGDIOBJ:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns a handle to one of the stock pens, brushes, fonts, or palettes.</h4>
+<h2>Parameters</h2>
+<h4><i>i</i> int
+<br><blockquote>The type of stock object to be retrieved.</blockquote>
+</h4>
+<hr>
+<h1>GetStretchBltMode</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetStretchBltMode</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Gets the current stretching mode of the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>The device context to retrieve the stretching mode of</blockquote>
+</h4>
+<hr>
+<h1>GetTextAlign</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetTextAlign</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the text-alignment setting for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>GetTextColor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetTextColor</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the text color for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>GetWorldTransform</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetWorldTransform</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> (float, float, float, float, float, float):<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Returns the current world-space to page-space transformation.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>InvertRgn</h1>
+<p>No documentation provided yet.</p>
+
+<hr>
+<h1>LineTo</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">LineTo</span><span style="color:white;">(hdc: HDC, x: int, y: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a line from the current position up to, but not including, the specified point.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>X-coordinate of the line</blockquote>
+<br><i>y</i> int
+<br><blockquote>Y-coordinate of the line</blockquote>
+</h4>
+<hr>
+<h1>MaskBlt</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MaskBlt</span><span style="color:white;">(hdcDest: hdc, xDest: int, yDest: int, width: int, height: int, hdcSrc: hdc, xSrc: int, ySrc: int, hbmMask: HBITMAP, xMask: int, yMask: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Combines the color data for the source and destination bitmaps using the specified mask and raster operation.</h4>
+<h2>Parameters</h2>
+<h4><i>hdcDest</i> hdc
+<br><blockquote>Handle to the destination device context.</blockquote>
+<br><i>xDest</i> int
+<br><blockquote>The x-coordinate, in logical units, of the upper-left corner of the source rectangle.</blockquote>
+<br><i>yDest</i> int
+<br><blockquote>The y-coordinate, in logical units, of the upper-left corner of the source rectangle.</blockquote>
+<br><i>width</i> int
+<br><blockquote>The width, in logical units, of the source rectangle.</blockquote>
+<br><i>height</i> int
+<br><blockquote>The height, in logical units, of the source rectangle.</blockquote>
+<br><i>hdcSrc</i> hdc
+<br><blockquote>Handle to the source device context.</blockquote>
+<br><i>xSrc</i> int
+<br><blockquote>The x-coordinate, in logical units, of the upper-left corner of the source bitmap.</blockquote>
+<br><i>ySrc</i> int
+<br><blockquote>The y-coordinate, in logical units, of the upper-left corner of the source bitmap.</blockquote>
+<br><i>hbmMask</i> HBITMAP
+<br><blockquote>A handle to a monochrome bitmap that is used to mask the colors of the source rectangle.</blockquote>
+<br><i>xMask</i> int
+<br><blockquote>The x-coordinate, in logical units, of the upper-left corner of the monochrome bitmap.</blockquote>
+<br><i>yMask</i> int
+<br><blockquote>The y-coordinate, in logical units, of the upper-left corner of the monochrome bitmap.</blockquote>
+</h4>
+<hr>
+<h1>PaintRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PaintRgn</span><span style="color:white;">(hdc: HDC, rgn: HRGN)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Paints the specified region by using the brush currently selected into the device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>rgn</i> HRGN
+<br><blockquote>Region to be painted</blockquote>
+</h4>
+<hr>
+<h1>PatBlt</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PatBlt</span><span style="color:white;">(HDC: hdc, int: x, int: y, int: w, int: h, int: rop)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Paints a rectangle on the specified device context by mixing the current brush with existing colors according to the rop argument.</h4>
+<h2>Parameters</h2>
+<h4><i>HDC</i> hdc
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>int</i> x
+<br><blockquote>Rectangles left offset</blockquote>
+<br><i>int</i> y
+<br><blockquote>Rectangles top offset</blockquote>
+<br><i>int</i> w
+<br><blockquote>Rectangles right offset</blockquote>
+<br><i>int</i> h
+<br><blockquote>Rectangles bottom offset</blockquote>
+<br><i>int</i> rop
+<br><blockquote>The raster operation code</blockquote>
+</h4>
+<hr>
+<h1>PathToRegion</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PathToRegion</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> HRGN:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Creates a region from the path that is selected into the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>Pie</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Pie</span><span style="color:white;">(hdc: HDC, left: int, top: int, right: int, bottom: int, xr1: int, yr1: int, xr2: int, yr2: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a pie-shaped wedge bounded by the intersection of an ellipse and two radials. The pie is outlined by using the current pen and filled by using the current brush.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>left</i> int
+<br><blockquote>X coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>top</i> int
+<br><blockquote>Y coordinate of the upper-left corner of the bounding rectangle</blockquote>
+<br><i>right</i> int
+<br><blockquote>X coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>bottom</i> int
+<br><blockquote>Y coordinate of the lower-right corner of the bounding rectangle</blockquote>
+<br><i>xr1</i> int
+<br><blockquote>X-coordinate of the endpoint of the first radial</blockquote>
+<br><i>yr1</i> int
+<br><blockquote>Y-coordinate of the endpoint of the first radial</blockquote>
+<br><i>xr2</i> int
+<br><blockquote>X-coordinate of the endpoint of the second radial</blockquote>
+<br><i>yr2</i> int
+<br><blockquote>Y-coordinate of the endpoint of the second radial</blockquote>
+</h4>
+<hr>
+<h1>PlgBlt</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PlgBlt</span><span style="color:white;">(hdcDst: hdc, points: tuple, hdcSrc: hdc, xSrc: int, ySrc: int, width: int, height: int, bitmap: HBITMAP, xMask: int, yMask: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Performs a bit-block transfer of the bits of color data from the specified rectangle in the source device context to the specified parallelogram in the destination device context. If the given bitmask handle identifies a valid monochrome bitmap, the function uses this bitmap to mask the bits of color data from the source rectangle.</h4>
+<h2>Parameters</h2>
+<h4><i>hdcDst</i> hdc
+<br><blockquote>Handle to the destination device context.</blockquote>
+<br><i>points</i> tuple
+<br><blockquote>Tuple of three tuples of two ints that identify the parallelogram. Example ``((-10, 10), (20, 0), (10, -10))``.</blockquote>
+<br><i>hdcSrc</i> hdc
+<br><blockquote>Handle to the source device context.</blockquote>
+<br><i>xSrc</i> int
+<br><blockquote>The x-coordinate, in logical units, of the upper-left corner of the source rectangle.</blockquote>
+<br><i>ySrc</i> int
+<br><blockquote>The y-coordinate, in logical units, of the upper-left corner of the source rectangle.</blockquote>
+<br><i>width</i> int
+<br><blockquote>The width, in logical units, of the source rectangle.</blockquote>
+<br><i>height</i> int
+<br><blockquote>The height, in logical units, of the source rectangle.</blockquote>
+<br><i>bitmap</i> HBITMAP
+<br><blockquote>None or a handle to a monochrome bitmap that is used to mask the colors of the source rectangle.</blockquote>
+<br><i>xMask</i> int
+<br><blockquote>The x-coordinate, in logical units, of the upper-left corner of the monochrome bitmap.</blockquote>
+<br><i>yMask</i> int
+<br><blockquote>The y-coordinate, in logical units, of the upper-left corner of the monochrome bitmap.</blockquote>
+</h4>
+<hr>
+<h1>RGB</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">RGB</span><span style="color:white;">(r: int, g: int, b: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Converts the specified RGB color to an integer passable to WinAPY functions.</h4>
+<h2>Parameters</h2>
+<h4><i>r</i> int
+<br><blockquote>The R Value</blockquote>
+<br><i>g</i> int
+<br><blockquote>The G value</blockquote>
+<br><i>b</i> int
+<br><blockquote>The B value</blockquote>
+</h4>
+<hr>
+<h1>Rectangle</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Rectangle</span><span style="color:white;">(left: int, top: int, right: int, bottom: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a rectangle using the current brush on the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>left</i> int
+<br><blockquote>Left offset of rectangle</blockquote>
+<br><i>top</i> int
+<br><blockquote>Top offset of rectangle</blockquote>
+<br><i>right</i> int
+<br><blockquote>Right offset of rectangle</blockquote>
+<br><i>bottom</i> int
+<br><blockquote>Bottom offset of rectangle</blockquote>
+</h4>
+<hr>
+<h1>RestoreDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">RestoreDC</span><span style="color:white;">(hdc: HDC, nSavedDC: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Restores a device context to the specified state returned from the SaveDC function.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>nSavedDC</i> int
+<br><blockquote>The state to be restored</blockquote>
+</h4>
+<hr>
+<h1>RoundRect</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">RoundRect</span><span style="color:white;">(hdc: HDC, x1: int, y1: int, x2: int, y2: int, w: int, h: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Draws a rectangle with rounded corners.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context.</blockquote>
+<br><i>x1</i> int
+<br><blockquote>X coordinate of the upper-left rectangle.</blockquote>
+<br><i>y1</i> int
+<br><blockquote>Y coordinate of the upper-left rectangle.</blockquote>
+<br><i>x2</i> int
+<br><blockquote>X coordinate of the down-right rectangle.</blockquote>
+<br><i>y2</i> int
+<br><blockquote>Y coordinate of the down-right rectangle.</blockquote>
+<br><i>w</i> int
+<br><blockquote>Horizontal strength of the roundness.</blockquote>
+<br><i>h</i> int
+<br><blockquote>Vertical strength of the roundness.</blockquote>
+</h4>
+<hr>
+<h1>SaveDC</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SaveDC</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Saves the current state of the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+</h4>
+<hr>
+<h1>SelectClipPath</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SelectClipPath</span><span style="color:white;">(hdc: HDC, mode: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Selects the current path as a clipping region for a device context, merging the new region with any existing clipping region using the specified mode.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>mode</i> int
+<br><blockquote>RGN_AND, RGN_COPY, RGN_DIFF, RGN_OR or RGN_XOR</blockquote>
+</h4>
+<hr>
+<h1>SelectClipRgn</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SelectClipRgn</span><span style="color:white;">(hdc: HDC, hrgn: HRGN)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Selects a region as the current clipping region for the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>A handle to a device context</blockquote>
+<br><i>hrgn</i> HRGN
+<br><blockquote>A handle to a region</blockquote>
+</h4>
+<hr>
+<h1>SelectObject</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SelectObject</span><span style="color:white;">(object: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the specified device context's current object of that objects type the specified object.</h4>
+<h2>Parameters</h2>
+<h4><i>object</i> int
+<br><blockquote>Handle to the object to select</blockquote>
+</h4>
+<hr>
+<h1>SelectPalette</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SelectPalette</span><span style="color:white;">(hdc: HDC, hPal: HPALLETE, forceBkgd: bool)</span> <span style="color:#f92672">-&gt;</span> HPALLETE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Selects the specified logical palette into a device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>hPal</i> HPALLETE
+<br><blockquote>Handle to the logical palette to be selected</blockquote>
+<br><i>forceBkgd</i> bool
+<br><blockquote>[Optional] Specifies whether the logical palette is forced to be a background palette</blockquote>
+</h4>
+<hr>
+<h1>SetArcDirection</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetArcDirection</span><span style="color:white;">(hdc: HDC, dir: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the drawing direction to be used for arc and rectangle functions.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to the device context</blockquote>
+<br><i>dir</i> int
+<br><blockquote>AD_COUNTERCLOCKWISE (Figures drawn counterclockwise) or AD_CLOCKWISE (Figures drawn clockwise)</blockquote>
+</h4>
+<hr>
+<h1>SetBkColor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetBkColor</span><span style="color:white;">(hdc: HDC, mode: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the background mix mode of the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>mode</i> int
+<br><blockquote>OPAQUE or TRANSPARENT</blockquote>
+</h4>
+<hr>
+<h1>SetBkMode</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetBkMode</span><span style="color:white;">(hdc: HDC, mode: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the background mix mode of the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>mode</i> int
+<br><blockquote>OPAQUE or TRANSPARENT</blockquote>
+</h4>
+<hr>
+<h1>SetPixel</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetPixel</span><span style="color:white;">(hdc: HDC, x: int, y: int, color: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the specified pixel on a device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>The device context to change the pixel of.</blockquote>
+<br><i>x</i> int
+<br><blockquote>The x coordinate of the pixel</blockquote>
+<br><i>y</i> int
+<br><blockquote>The y coordinate of the pixel</blockquote>
+<br><i>color</i> int
+<br><blockquote>The new color of the pixel</blockquote>
+</h4>
+<hr>
+<h1>SetPixelV</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetPixelV</span><span style="color:white;">(hdc: HDC, x: int, y: int, color: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the pixel at the specified coordinate to the specified color.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>The X coordinate of the pixel</blockquote>
+<br><i>y</i> int
+<br><blockquote>The Y coordinate of the pixel</blockquote>
+<br><i>color</i> int
+<br><blockquote>The new color of the pixel</blockquote>
+</h4>
+<hr>
+<h1>SetPolyFillMode</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetPolyFillMode</span><span style="color:white;">(hdc: HDC, mode: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the polygon fill mode for functions that fill polygons</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>mode</i> int
+<br><blockquote>ALTERNATE or WINDING</blockquote>
+</h4>
+<hr>
+<h1>SetROP2</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetROP2</span><span style="color:white;">(hdc: HDC, rop2: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the current foreground mix mode and returns the previous value.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>rop2</i> int
+<br><blockquote>The mixing mode</blockquote>
+</h4>
+<hr>
+<h1>SetStretchBltMode</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetStretchBltMode</span><span style="color:white;">(hdc: HDC, iMode: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the bitmap stretching mode in the specified device context.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>The device context to change the stretching mode of</blockquote>
+<br><i>iMode</i> int
+<br><blockquote>The new stretching mode</blockquote>
+</h4>
+<hr>
+<h1>SetTextAlign</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetTextAlign</span><span style="color:white;">(hdc: HDC, align: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the text-alignment flags for the specified device context and returns the previous value.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>align</i> int
+<br><blockquote>The text alignment by using a mask.</blockquote>
+</h4>
+<hr>
+<h1>SetTextCharacterExtra</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetTextCharacterExtra</span><span style="color:white;">(hdc: HDC, extra: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the intercharacter spacing for the specified device context. Returns the previous intercharacter spacing.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>extra</i> int
+<br><blockquote>The amount of extra space</blockquote>
+</h4>
+<hr>
+<h1>SetTextColor</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetTextColor</span><span style="color:white;">(hdc: HDC, color: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the text color for the specified device context to the specified color.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>color</i> int
+<br><blockquote>Text color</blockquote>
+</h4>
+<hr>
+<h1>SetTextJustification</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetTextJustification</span><span style="color:white;">(hdc: HDC, extra: int, count: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sets the amount of space the system should add to the break characters in a string of text.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>extra</i> int
+<br><blockquote>The extra space</blockquote>
+<br><i>count</i> int
+<br><blockquote>The number of break characters in the line</blockquote>
+</h4>
+<hr>
+<h1>Sleep</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Sleep</span><span style="color:white;">(dwMilliseconds: int)</span> <span style="color:#f92672">-&gt;</span> NoneType:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Sleeps for the specified duration, in milliseconds.</h4>
+<h2>Parameters</h2>
+<h4><i>dwMilliseconds</i> int
+<br><blockquote>The amount to wait in milliseconds</blockquote>
+</h4>
+<hr>
+<h1>StretchBlt</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">StretchBlt</span><span style="color:white;">(hdcDest: HDC, xDest: int, yDest: int, wDest: int, hDest: int, hdcSrc: HDC, xSrc: int, ySrc: int, wSrc: int, hSrc: int, rop: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Copies a bitmap from a source rectangle into a destination rectangle, stretching or compressing the bitmap to fit the dimensions of the destination rectangle.</h4>
+<h2>Parameters</h2>
+<h4><i>hdcDest</i> HDC
+<br><blockquote>Handle to destinations device context</blockquote>
+<br><i>xDest</i> int
+<br><blockquote>Left offset of the destinations rectangle</blockquote>
+<br><i>yDest</i> int
+<br><blockquote>Top offset of the destinations rectangle</blockquote>
+<br><i>wDest</i> int
+<br><blockquote>Right offset of the destinations rectangle</blockquote>
+<br><i>hDest</i> int
+<br><blockquote>Bottom offset of the destinations rectangle</blockquote>
+<br><i>hdcSrc</i> HDC
+<br><blockquote>Handle to sources device context</blockquote>
+<br><i>xSrc</i> int
+<br><blockquote>Left offset of the sources rectangle</blockquote>
+<br><i>ySrc</i> int
+<br><blockquote>Top offset of the sources rectangle</blockquote>
+<br><i>wSrc</i> int
+<br><blockquote>Right offset of the sources rectangle</blockquote>
+<br><i>hSrc</i> int
+<br><blockquote>Bottom offset of the sources rectangle</blockquote>
+<br><i>rop</i> int
+<br><blockquote>The raster operation</blockquote>
+</h4>
+<hr>
+<h1>TextOut</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">TextOut</span><span style="color:white;">(hdc: HDC, x: int, y: int, string: str)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Writes a string at the specified location, using the currently selected font, background color, and text color.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>The x-position where the text should be drawn at</blockquote>
+<br><i>y</i> int
+<br><blockquote>The y-position where the text should be drawn at</blockquote>
+<br><i>string</i> str
+<br><blockquote>The text that should be drawn, in UTF-16</blockquote>
+</h4>
+<hr>
+<h1>TextOutA</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">TextOutA</span><span style="color:white;">(hdc: HDC, x: int, y: int, string: str)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Writes a string at the specified location, using the currently selected font, background color, and text color.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>The x-position where the text should be drawn at</blockquote>
+<br><i>y</i> int
+<br><blockquote>The y-position where the text should be drawn at</blockquote>
+<br><i>string</i> str
+<br><blockquote>The text that should be drawn, in ASCII</blockquote>
+</h4>
+<hr>
+<h1>TextOutW</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">TextOutW</span><span style="color:white;">(hdc: HDC, x: int, y: int, string: str)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Writes a string at the specified location, using the currently selected font, background color, and text color.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+<br><i>x</i> int
+<br><blockquote>The x-position where the text should be drawn at</blockquote>
+<br><i>y</i> int
+<br><blockquote>The y-position where the text should be drawn at</blockquote>
+<br><i>string</i> str
+<br><blockquote>The text that should be drawn, in UTF-16</blockquote>
+</h4>
+<hr>
+<h1>UnrealizeObject</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">UnrealizeObject</span><span style="color:white;">(h: HGDIOBJ)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Resets the origin of a brush or resets a palette.</h4>
+<h2>Parameters</h2>
+<h4><i>h</i> HGDIOBJ
+<br><blockquote>Handle to an object to be reset</blockquote>
+</h4>
+<hr>
+<h1>UpdateColors</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">UpdateColors</span><span style="color:white;">(hdc: HDC)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Updates the client area of the specified device context by remapping the current colors in the client area to the currently realized logical palette.</h4>
+<h2>Parameters</h2>
+<h4><i>hdc</i> HDC
+<br><blockquote>Handle to a device context</blockquote>
+</h4>
+<hr>
+<h1>rand</h1>
+<div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">rand</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<h2>Description</h2>
+<h4>Generates a random integer.</h4>
+</div>
+
+</body>
+</html>
