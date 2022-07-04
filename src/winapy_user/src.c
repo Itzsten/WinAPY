@@ -3,26 +3,11 @@
     Copyright (c) 2022 Itzsten
 */
 
-#include "Python.h"
-#include <Windows.h>
-#include <stdio.h>
+#include "utils.h"
 
 #pragma comment(lib, "User32.lib")
 #pragma comment(lib, "Advapi32.lib")
-
-#if PY_MAJOR_VERSION >= 3
-#define PyString_ToCharArr PyUnicode_AsUTF8
-#else
-#define PyString_ToCharArr PyString_AsString
-#endif
-
-BOOL WINAPI RaiseExceptionCheck(BOOL bSuccess) {
-    if (GetLastError() && (!bSuccess)) {
-        PyErr_SetFromWindowsErr(GetLastError());
-        return TRUE;
-    }
-    return FALSE;
-}
+#pragma comment(lib, "Shell32.lib")
 
 typedef struct tagPYENUMCHILDWINDOWPARAMS {
     PyObject* func;
@@ -732,7 +717,520 @@ static PyObject* PyFillRect(PyObject* self, PyObject* args) {
     return Py_BuildValue("O", PyBool_FromLong(res));
 }
 
+static PyObject* PyGetKeyboardLayout(PyObject* _, PyObject* args) {
+    DWORD thread;
+    if (!PyArg_ParseTuple(args, "k", &thread)) return NULL;
+    HKL res = GetKeyboardLayout(thread);
+    return Py_BuildValue("(lL)", LOWORD(res), HIWORD(res));
+}
+
+static PyObject* PyActivateKeyboardLayout(PyObject* _, PyObject* args) {
+    INT hkl;
+    UINT flags;
+    if (!PyArg_ParseTuple(args, "iI", &hkl, &flags)) return NULL;
+    HKL res = ActivateKeyboardLayout(hkl, flags);
+    if (RaiseExceptionCheck(res)) return NULL;
+    return Py_BuildValue("L", res);
+}
+
+static PyObject* PyBlockInput(PyObject* _, PyObject* args) {
+    PyObject* b;
+    if (!PyArg_ParseTuple(args, "O", &b)) return NULL;
+    if (!PyBool_Check(b)) {
+        PyErr_SetString(PyExc_TypeError, "argument 1: excepted bool object");
+        return NULL;
+    }
+    BOOL bBlock = PyObject_IsTrue(b);
+    BOOL res = BlockInput(bBlock);
+    if (RaiseExceptionCheck(res)) return NULL;
+    return Py_BuildValue("i", 0);
+}
+
+static PyObject* PyAbortSystemShutdownA(PyObject* _, PyObject* args) {
+    PyObject* computer;
+    CHAR* comp = NULL;
+    if (!PyArg_ParseTuple(args, "O", &computer)) return NULL;
+    if (computer != Py_None) comp = PyUnicode_AsUTF8(computer);
+    if (RaiseExceptionCheck(AbortSystemShutdownA(comp))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyAbortSystemShutdownW(PyObject* _, PyObject* args) {
+    PyObject* computer;
+    WCHAR* comp = NULL;
+    if (!PyArg_ParseTuple(args, "O", &computer)) return NULL;
+    if (computer != Py_None) {
+        Py_ssize_t sz = PyUnicode_GetLength(computer);
+        comp = PyUnicode_AsWideCharString(computer, &sz);
+    }
+    if (RaiseExceptionCheck(AbortSystemShutdownW(comp))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyGetConsoleWindow(PyObject* _, PyObject* args) {
+    HWND res = GetConsoleWindow();
+    return Py_BuildValue("O", res == NULL ? Py_None : PyLong_FromLongLong(res));
+}
+static PyObject* PyGetCommandLineA(PyObject* _, PyObject* args) {
+    return Py_BuildValue("s", GetCommandLineA());
+}
+static PyObject* PyGetCommandLineW(PyObject* _, PyObject* args) {
+    return Py_BuildValue("u", GetCommandLineW());
+}
+static PyObject* PyCommandLineToArgvW(PyObject* _, PyObject* args) {
+    WCHAR* cmdLine;
+    if (!PyArg_ParseTuple(args, "u", &cmdLine)) return NULL;
+
+    int argc;
+    LPCWSTR* argv = CommandLineToArgvW(cmdLine, &argc);
+    if (!argc) return Py_BuildValue("s", "");
+
+    PyObject* arr = PyTuple_New(argc);
+
+    for (INT i = 0; i < argc; i++) {
+        PyTuple_SET_ITEM(arr, i, Py_BuildValue("u", argv[i]));
+    }
+
+    return Py_BuildValue("O", arr);
+}
+static PyObject* PyCloseHandle(PyObject* _, PyObject* args) {
+    HANDLE h;
+    if (!PyArg_ParseTuple(args, "L", &h)) return NULL;
+    if (RaiseExceptionCheck(CloseHandle(h))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyCopyFileA(PyObject* _, PyObject* args) {
+    CHAR* currentFile;
+    CHAR* newFile;
+    PyObject* boolFailIfExists;
+    if (!PyArg_ParseTuple(args, "ssO", &currentFile, &newFile, &boolFailIfExists)) return NULL;
+
+    if (!PyBool_Check(boolFailIfExists)) {
+        PyErr_SetString(PyExc_TypeError, "argument 3: excepted bool object");
+        return NULL;
+    }
+    BOOL bFailIfExist = PyObject_IsTrue(boolFailIfExists);
+    if (RaiseExceptionCheck(CopyFileA(currentFile, newFile, bFailIfExist))) return NULL;
+
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyCopyFileW(PyObject* _, PyObject* args) {
+    WCHAR* currentFile;
+    WCHAR* newFile;
+    PyObject* boolFailIfExists;
+    if (!PyArg_ParseTuple(args, "uuO", &currentFile, &newFile, &boolFailIfExists)) return NULL;
+
+    if (!PyBool_Check(boolFailIfExists)) {
+        PyErr_SetString(PyExc_TypeError, "argument 3: excepted bool object");
+        return NULL;
+    }
+    BOOL bFailIfExist = PyObject_IsTrue(boolFailIfExists);
+    if (RaiseExceptionCheck(CopyFileW(currentFile, newFile, bFailIfExist))) return NULL;
+
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyDeleteFileA(PyObject* _, PyObject* args) {
+    CHAR* targetFile;
+    if (!PyArg_ParseTuple(args, "s", &targetFile)) return NULL;
+    if (RaiseExceptionCheck(DeleteFileA(targetFile))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyDeleteFileW(PyObject* _, PyObject* args) {
+    WCHAR* targetFile;
+    if (!PyArg_ParseTuple(args, "u", &targetFile)) return NULL;
+    if (RaiseExceptionCheck(DeleteFileW(targetFile))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyGetComputerNameA(PyObject* _, PyObject* args) {
+    CHAR sz[MAX_COMPUTERNAME_LENGTH + 1];
+    DWORD len = sizeof(sz) / sizeof(CHAR);
+    if (RaiseExceptionCheck(GetComputerNameA(sz, &len))) return NULL;
+    return Py_BuildValue("s", sz);
+}
+static PyObject* PyGetComputerNameW(PyObject* _, PyObject* args) {
+    WCHAR buffer[MAX_COMPUTERNAME_LENGTH + 1];
+    DWORD sz = sizeof(buffer) / sizeof(WCHAR);
+    if (RaiseExceptionCheck(GetComputerNameW(buffer, &sz))) return NULL;
+    return Py_BuildValue("u", buffer);
+}
+static PyObject* PyGetComputerNameExA(PyObject* _, PyObject* args) {
+    COMPUTER_NAME_FORMAT targetName;
+    if (!PyArg_ParseTuple(args, "i", &targetName)) return NULL;
+    DWORD szRequired;
+    GetComputerNameExA(targetName, NULL, &szRequired);
+    LPSTR s = malloc(sizeof(CHAR) * szRequired);
+    if (RaiseExceptionCheck(GetComputerNameExA(targetName, s, &szRequired))) return NULL;
+    return Py_BuildValue("s", s);
+}
+static PyObject* PyGetComputerNameExW(PyObject* _, PyObject* args) {
+    COMPUTER_NAME_FORMAT targetName;
+    if (!PyArg_ParseTuple(args, "i", &targetName)) return NULL;
+    DWORD szRequired;
+    GetComputerNameExW(targetName, NULL, &szRequired);
+    LPWSTR s = malloc(sizeof(CHAR) * szRequired);
+    if (RaiseExceptionCheck(GetComputerNameExW(targetName, s, &szRequired))) return NULL;
+    return Py_BuildValue("u", s);
+}
+static PyObject* PyPlaySoundA(PyObject* _, PyObject* args) {
+    LPCSTR str;
+    PyObject* obSound;
+    HMODULE mod = NULL;
+    PyObject* obMod;
+    DWORD flags;
+    if (!PyArg_ParseTuple(args, "OOk", &obSound, &obMod, &flags)) return NULL;
+    if (obMod != Py_None) mod = PyLong_AsLongLong(obMod);
+
+    if (PyLong_Check(obSound)) {
+        str = (LPCSTR)(PyLong_AsLongLong(obSound));
+    } else {
+        if (obSound == Py_None) {
+            str = NULL;
+        } else {
+            str = PyString_ToCharArr(obSound);
+        }
+    }
+
+    if (!PlaySoundA(str, mod, flags)) {
+        PyErr_SetFromWindowsErr(87);
+        return NULL;
+    }
+
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyPlaySoundW(PyObject* _, PyObject* args) {
+    LPCWSTR str;
+    PyObject* obSound;
+    HMODULE mod = NULL;
+    PyObject* obMod;
+    DWORD flags;
+    if (!PyArg_ParseTuple(args, "OOk", &obSound, &obMod, &flags)) return NULL;
+    if (obMod != Py_None) mod = PyLong_AsLongLong(obMod);
+
+    if (PyLong_Check(obSound)) {
+        str = (LPCWSTR)(PyLong_AsLongLong(obSound));
+    }
+    else {
+        if (obSound == Py_None) {
+            str = NULL;
+        } else {
+            str = PyUnicode_AsWideCharString(obSound, NULL);
+        }
+    }
+
+    if (!PlaySoundW(str, mod, flags)) {
+        PyErr_SetFromWindowsErr(87);
+        return NULL;
+    }
+
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PySendMessageW(PyObject* _, PyObject* args) {
+    HWND h;
+    UINT msg;
+    LONGLONG lParamX;
+    LONGLONG lParamY = -6294576;
+    ULONGLONG wParam;
+    LPARAM lRes;
+    PyOb oblParamX;
+    if (!PyArg_ParseTuple(args, "lIKO|L", &h, &msg, &wParam, &oblParamX, &lParamY)) return NULL;
+
+    if (PyLong_Check(oblParamX)){
+        lRes = PyLong_AsLongLong(oblParamX);
+    } else {
+        lRes = (LPARAM)PyUnicode_AsWideCharString(oblParamX, NULL);
+    }
+
+    if (lParamY != -6294576) {
+        lRes = MAKELPARAM(PyLong_AsLong(oblParamX), lParamY);
+    }
+    LONGLONG res = SendMessageW(h, msg, wParam, lRes);
+    return Py_BuildValue("L", res);
+}
+static PyObject* PySendMessageA(PyObject* _, PyObject* args) {
+    HWND h;
+    UINT msg;
+    LONGLONG lParamX;
+    LONGLONG lParamY = -6294576;
+    ULONGLONG wParam;
+    LPARAM lRes;
+    PyOb oblParamX;
+    if (!PyArg_ParseTuple(args, "lIKO|L", &h, &msg, &wParam, &oblParamX, &lParamY)) return NULL;
+
+    if (PyLong_Check(oblParamX)) {
+        lRes = PyLong_AsLongLong(oblParamX);
+    } else {
+        lRes = (LPARAM)PyString_ToCharArr(oblParamX);
+    }
+    if (lParamY != -6294576) {
+        lRes = MAKELPARAM(PyLong_AsLong(oblParamX), lParamY);
+    }
+    LONGLONG res = SendMessageA(h, msg, wParam, lRes);
+    return Py_BuildValue("L", res);
+}
+static PyObject* PyGetModuleHandleA(PyObject* _, PyObject* args) {
+    PyObject* obModule = Py_None;
+    LPCSTR mod = NULL;
+    if (!PyArg_ParseTuple(args, "|O", &obModule)) return NULL;
+    if (obModule != Py_None) {
+        mod = PyString_ToCharArr(obModule);
+    }
+    HMODULE model = GetModuleHandleA(mod);
+    if (RaiseExceptionCheck(model)) return NULL;
+    return Py_BuildValue("L", model);
+}
+static PyObject* PyGetModuleHandleW(PyObject* _, PyObject* args) {
+    PyObject* obModule = Py_None;
+    LPCWSTR mod = NULL;
+    if (!PyArg_ParseTuple(args, "|O", &obModule)) return NULL;
+    if (obModule != Py_None) {
+        mod = PyUnicode_AsWideCharString(obModule, NULL);
+    }
+    HMODULE model = GetModuleHandleW(mod);
+    if (RaiseExceptionCheck(model)) return NULL;
+    return Py_BuildValue("L", model);
+}
+static PyObject* PyExtractIconA(PyObject* _, PyObject* args) {
+    HINSTANCE hinst;
+    LPCSTR name;
+    UINT index;
+    if (!PyArg_ParseTuple(args, "LsI", &hinst, &name, &index)) return NULL;
+    HICON hic = ExtractIconA(hinst, name, index);
+    if (hic == 1) {
+        PyErr_SetString(PyExc_ValueError, "The file specified must be an executable, DLL, or icon file.");
+        return NULL;
+    }
+    if (hic == NULL) {
+        PyErr_SetString(PyExc_ValueError, "No icons were found in the specified file.");
+        return NULL;
+    }
+    return Py_BuildValue("L", hic);
+}
+static PyObject* PyExtractIconW(PyObject* _, PyObject* args) {
+    HINSTANCE hinst;
+    LPCWSTR name;
+    UINT index;
+    if (!PyArg_ParseTuple(args, "LuI", &hinst, &name, &index)) return NULL;
+    HICON hic = ExtractIconW(hinst, name, index);
+    if (hic == 1) {
+        PyErr_SetString(PyExc_ValueError, "The file specified must be an executable, DLL, or icon file.");
+        return NULL;
+    }
+    if (hic == NULL) {
+        PyErr_SetString(PyExc_ValueError, "No icons were found in the specified file.");
+        return NULL;
+    }
+    return Py_BuildValue("L", hic);
+}
+static PyObject* PyDestroyIcon(PyObject* _, PyObject* args) {
+    HICON ic;
+    if (!PyArg_ParseTuple(args, "L", &ic)) return NULL;
+    if (RaiseExceptionCheck(DestroyIcon(ic))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyMessageBoxIndirectA(PyObject* _, PyObject* args) {
+    MSGBOXPARAMSA par;
+    HICON ic;
+    HWND h = NULL;
+    par.dwLanguageId = MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT);
+    par.dwContextHelpId = 0;
+    par.lpfnMsgBoxCallback = NULL;
+    par.cbSize = sizeof(MSGBOXPARAMSA);
+    PyObject* obHwnd;
+    if (!PyArg_ParseTuple(args, "OLsskL|k", &obHwnd, &par.hInstance, &par.lpszText, &par.lpszCaption, &par.dwStyle,
+        &ic, &par.dwLanguageId
+    )) return NULL;
+    if (obHwnd != Py_None) h = PyLong_AsLong(obHwnd);
+    par.lpszIcon = MAKEINTRESOURCEA(ic);
+    par.hwndOwner = h;
+    INT res = MessageBoxIndirectA(&par);
+    if (!res) {
+        PyErr_SetString(PyExc_MemoryError, "Too little memory is available to create the message box!");
+        return NULL;
+    }
+    return Py_BuildValue("i", res);
+}
+static PyObject* PyMessageBoxIndirectW(PyObject* _, PyObject* args) {
+    MSGBOXPARAMSW par;
+    HICON ic;
+    HWND h = NULL;
+    par.dwLanguageId = MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT);
+    par.dwContextHelpId = NULL;
+    par.lpfnMsgBoxCallback = NULL;
+    par.cbSize = sizeof(MSGBOXPARAMSW);
+    PyObject* obHwnd;
+    if (!PyArg_ParseTuple(args, "OLuukL|k", &obHwnd, &par.hInstance, &par.lpszText, &par.lpszCaption, &par.dwStyle,
+        &ic, &par.dwLanguageId
+    )) return NULL;
+    if (obHwnd != Py_None) h = PyLong_AsLong(obHwnd);
+    par.hwndOwner = h;
+    par.lpszIcon = MAKEINTRESOURCEW(ic);
+    INT res = MessageBoxIndirectW(&par);
+    if (!res) {
+        PyErr_SetString(PyExc_MemoryError, "Too little memory is available to create the message box!");
+        return NULL;
+    }
+    return Py_BuildValue("i", res);
+}
+static PyOb PyEnableWindow(PyOb _, PyOb args) {
+    HWND h;
+    BOOL enabled;
+    PyOb obEnabled;
+    if (!PyArg_ParseTuple(args, "lO", &h, &obEnabled)) return NULL;
+    if (!PyBool_Check(obEnabled)) {
+        PyErr_SetString(PyExc_TypeError, "argument 2: excepted bool object");
+        return NULL;
+    }
+    enabled = PyObject_IsTrue(obEnabled);
+    if (RaiseExceptionCheck(EnableWindow(h, enabled))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyOb PySetDlgItemTextA(PyOb _, PyOb args) {
+    LPSTR s;
+    HWND h;
+    INT ctrl;
+    if (!PyArg_ParseTuple(args, "lis", &h, &ctrl, &s)) return NULL;
+    if (RaiseExceptionCheck(SetDlgItemTextA(h, ctrl, s))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyOb PySetDlgItemTextW(PyOb _, PyOb args) {
+    LPWSTR s;
+    HWND h;
+    INT ctrl;
+    if (!PyArg_ParseTuple(args, "liu", &h, &ctrl, &s)) return NULL;
+    if (RaiseExceptionCheck(SetDlgItemTextW(h, ctrl, s))) return NULL;
+    return Py_BuildValue("i", 0);
+}
+static PyOb PyGetDlgCtrlID(PyOb _, PyOb args) {
+    HWND h;
+    if (!PyArg_ParseTuple(args, "l", &h)) return NULL;
+    INT res = GetDlgCtrlID(h);
+    if (RaiseExceptionCheck(res)) return NULL;
+    return Py_BuildValue("i", res);
+}
+static PyOb PyGetDialogBaseUnits(PyOb _, PyOb args) {
+    LONG res = GetDialogBaseUnits();
+    return Py_BuildValue("(ll)", LOWORD(res), HIWORD(res));
+}
+static PyOb PySendDlgItemMessageA(PyOb _, PyOb args) {
+    HWND hDlg;
+    INT item;
+    UINT msg;
+    PyOb obLParam;
+    PyOb obWParam;
+    WPARAM wParam;
+    LPARAM lParam;
+    
+    if (!PyArg_ParseTuple(args, "liIOO", &hDlg, &item, &msg, &obWParam, &obLParam)) return NULL;
+
+    if (PyLong_Check(obWParam)) {
+        wParam = PyLong_AsUnsignedLongLong(obWParam);
+    } else {
+        wParam = PyString_ToCharArr(obWParam);
+    }
+
+    if (PyLong_Check(obLParam)) {
+        lParam = PyLong_AsUnsignedLongLong(obLParam);
+    }
+    else {
+        if (PyTuple_Check(obLParam)) {
+            if (PyTuple_GET_SIZE(obLParam) != 2) {
+                PyErr_SetString(PyExc_ValueError, "argument 2: must be a tuple of two integers, string or int object");
+                return NULL;
+            }
+            lParam = MAKELPARAM(PyLong_AsLong(PyTuple_GetItem(obLParam, 0)), PyLong_AsLong(PyTuple_GetItem(obLParam, 1)));
+        }
+        else {
+            lParam = PyString_ToCharArr(obLParam);
+        }
+    }
+    LRESULT res = SendDlgItemMessageA(hDlg, item, msg, wParam, lParam);
+    return Py_BuildValue("L", res);
+}
+static PyOb PySendDlgItemMessageW(PyOb _, PyOb args) {
+    HWND hDlg;
+    INT item;
+    UINT msg;
+    PyOb obLParam;
+    PyOb obWParam;
+    WPARAM wParam;
+    LPARAM lParam;
+
+    if (!PyArg_ParseTuple(args, "liIOO", &hDlg, &item, &msg, &obWParam, &obLParam)) return NULL;
+
+    if (PyLong_Check(obWParam)) {
+        wParam = PyLong_AsUnsignedLongLong(obWParam);
+    }
+    else {
+        wParam = PyString_ToCharArr(obWParam);
+    }
+
+    if (PyLong_Check(obLParam)) {
+        lParam = PyLong_AsUnsignedLongLong(obLParam);
+    }
+    else {
+        if (PyTuple_Check(obLParam)) {
+            if (PyTuple_GET_SIZE(obLParam) != 2) {
+                PyErr_SetString(PyExc_ValueError, "argument 2: must be a tuple of two integers, string or int object");
+                return NULL;
+            }
+            lParam = MAKELPARAM(PyLong_AsLong(PyTuple_GetItem(obLParam, 0)), PyLong_AsLong(PyTuple_GetItem(obLParam, 1)));
+        }
+        else {
+            lParam = PyUnicode_AsWideCharString(obLParam, NULL);
+        }
+    }
+    LRESULT res = SendDlgItemMessageW(hDlg, item, msg, wParam, lParam);
+    return Py_BuildValue("L", res);
+}
 static PyMethodDef module_methods[] = {
+    { "SendDlgItemMessage",  PySendDlgItemMessageW, METH_VARARGS },
+    { "SendDlgItemMessageW", PySendDlgItemMessageW, METH_VARARGS },
+    { "SendDlgItemMessageA", PySendDlgItemMessageA, METH_VARARGS },
+    { "GetDialogBaseUnits", PyGetDialogBaseUnits, METH_NOARGS },
+    { "GetDlgCtrlID", PyGetDlgCtrlID, METH_VARARGS },
+    { "SetDlgItemText",  PySetDlgItemTextW, METH_VARARGS },
+    { "SetDlgItemTextW", PySetDlgItemTextW, METH_VARARGS },
+    { "SetDlgItemTextA", PySetDlgItemTextA, METH_VARARGS },
+    { "EnableWindow", PyEnableWindow, METH_VARARGS },
+    { "MessageBoxIndirect",  PyMessageBoxIndirectW, METH_VARARGS },
+    { "MessageBoxIndirectW", PyMessageBoxIndirectW, METH_VARARGS },
+    { "MessageBoxIndirectA", PyMessageBoxIndirectA, METH_VARARGS },
+    { "DestroyIcon", PyDestroyIcon, METH_VARARGS },
+    { "ExtractIcon",  PyExtractIconW, METH_VARARGS },
+    { "ExtractIconW", PyExtractIconW, METH_VARARGS },
+    { "ExtractIconA", PyExtractIconA, METH_VARARGS },
+    { "GetModuleHandle",  PyGetModuleHandleW, METH_VARARGS },
+    { "GetModuleHandleW", PyGetModuleHandleW, METH_VARARGS },
+    { "GetModuleHandleA", PyGetModuleHandleA, METH_VARARGS },
+    { "SendMessage",  PySendMessageW, METH_VARARGS },
+    { "SendMessageW", PySendMessageW, METH_VARARGS },
+    { "SendMessageA", PySendMessageA, METH_VARARGS },
+    { "PlaySound",  PyPlaySoundW, METH_VARARGS },
+    { "PlaySoundW", PyPlaySoundW, METH_VARARGS },
+    { "PlaySoundA", PyPlaySoundA, METH_VARARGS },
+    { "GetComputerNameEx",  PyGetComputerNameExW, METH_VARARGS },
+    { "GetComputerNameExW", PyGetComputerNameExW, METH_VARARGS },
+    { "GetComputerNameExA", PyGetComputerNameExA, METH_VARARGS },
+    { "GetComputerName",  PyGetComputerNameW, METH_NOARGS },
+    { "GetComputerNameW", PyGetComputerNameW, METH_NOARGS },
+    { "GetComputerNameA", PyGetComputerNameA, METH_NOARGS },
+    { "DeleteFile",  PyDeleteFileW, METH_VARARGS },
+    { "DeleteFileW", PyDeleteFileW, METH_VARARGS },
+    { "DeleteFileA", PyDeleteFileA, METH_VARARGS },
+    { "CopyFileW", PyCopyFileW, METH_VARARGS },
+    { "CopyFileA", PyCopyFileA, METH_VARARGS },
+    { "CopyFile",  PyCopyFileW, METH_VARARGS },
+    { "CloseHandle", PyCloseHandle, METH_VARARGS },
+    { "CommandLineToArgvW", PyCommandLineToArgvW, METH_VARARGS },
+    { "CommandLineToArgv",  PyCommandLineToArgvW, METH_VARARGS },
+    { "GetCommandLine",  PyGetCommandLineW, METH_NOARGS },
+    { "GetCommandLineA", PyGetCommandLineA, METH_NOARGS },
+    { "GetCommandLineW", PyGetCommandLineW, METH_NOARGS },
+    { "GetConsoleWindow", PyGetConsoleWindow, METH_NOARGS },
+    { "AbortSystemShutdownA", PyAbortSystemShutdownA, METH_VARARGS },
+    { "AbortSystemShutdownW", PyAbortSystemShutdownW, METH_VARARGS },
+    { "AbortSystemShutdown",  PyAbortSystemShutdownW, METH_VARARGS },
+    { "BlockInput", PyBlockInput, METH_VARARGS },
+    { "ActivateKeyboardLayout", PyActivateKeyboardLayout, METH_VARARGS },
+    { "GetKeyboardLayout", PyGetKeyboardLayout, METH_VARARGS },
     { "GetDC", (PyCFunction)PyGetDC, METH_VARARGS },
     { "GetSystemMetrics", (PyCFunction)PyGetSystemMetrics, METH_VARARGS },
     { "GetDesktopWindow", (PyCFunction)PyGetDesktopWindow,  METH_NOARGS },
@@ -794,7 +1292,7 @@ static PyMethodDef module_methods[] = {
 static struct PyModuleDef ModuleCombinations =
 {
     PyModuleDef_HEAD_INIT,
-    "WinAPY_user", /* name of module */
+    "winapy_user", /* name of module */
     NULL,
     -1,   /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
     module_methods
