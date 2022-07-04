@@ -3,25 +3,12 @@
     Copyright (c) 2022 Itzsten
 */
 
-#include "Python.h"
-#include <Windows.h>
-#include <stdio.h>
+// Mainly developed for my YouTube channel, however functions asked to be added probably will.
+// Constant definitions? Meh.
+
+#include "utils.h"
 
 #pragma comment(lib, "gdi32.lib")
-
-#if PY_MAJOR_VERSION >= 3
-#define PyString_ToCharArr PyUnicode_AsUTF8
-#else
-#define PyString_ToCharArr PyString_AsString
-#endif
-
-BOOL WINAPI RaiseExceptionCheck(BOOL bSuccess) {
-    if (GetLastError() && (!bSuccess)) {
-        PyErr_SetFromWindowsErr(GetLastError());
-        return TRUE;
-    }
-    return FALSE;
-}
 
 static PyObject* PyPatBlt(PyObject* self, PyObject* args) {
     //@description@ Paints a rectangle on the specified device context by mixing the current brush with existing colors according to the rop argument.@@bool
@@ -940,7 +927,7 @@ static PyObject* PyCreatePenIndirect(PyObject* self, PyObject* args) {
 static PyObject* PyExtCreatePen(PyObject* self, PyObject* args) {
     //@description@ Creates a logical cosmetic or geometric pen that has the specified style, width, and brush attributes.@@HPEN
     //@args@ style|int|The type can be ``PS_GEOMETRIC or PS_COSMETIC``, combine it with the OR operator with the style that can be any of the following values; ``PS_ALTERNATE, PS_SOLID, PS_DASH, PS_DOT, PS_DASHDOT, PS_DASHDOTDOT, PS_NULL, PS_USERSTYLE, PS_INSIDEFRAME``, combine it with the OR operator if the pen type is geometric with any of the following values (end cap); ``PS_ENDCAP_ROUND, PS_ENDCAP_SQUARE, PS_ENDCAP_FLAT``, if it is geometrical you should also combine it with the OR operator with any of the following values (join); ``PS_JOIN_BEVEL, PS_JOIN_MITER, PS_JOIN_ROUND``.@@cWidth|int|The width of the pen. If the pen type is ``PS_COSMETIC`` it should be set to 1.@@logBrush|tuple|Tuple containing 3 elements; style, color and a hatch brush.@@pstyle|tuple|Tuple of maximum 16 ints that specifies an user-defined style, or None.
-    DWORD style, width;
+    DWORD style; DWORD width;
     PyObject* pyLb;
     PyObject* pstyle;
     DWORD pstyleR[16];
@@ -989,7 +976,7 @@ static PyObject* PyExtCreatePen(PyObject* self, PyObject* args) {
 static PyObject* PyFillRgn(PyObject* self, PyObject* args) {
     //@description@ Fills the specified region using the given brush.@@bool
     //@args@ hdc|HDC|Handle to a device context@@rgn|HRGN|Region to be filled@@brush|HBRUSH|Brush to paint the region with
-    LONG hdc, hrgn, brush;
+    LONG hdc; LONG hrgn; LONG brush;
     if (!PyArg_ParseTuple(args, "lll", &hdc, &hrgn, &brush)) {
         return NULL;
     }
@@ -1015,7 +1002,8 @@ static PyObject* PyFlattenPath(PyObject* self, PyObject* args) {
 static PyObject* PyFrameRgn(PyObject* self, PyObject* args) {
     //@description@ Draws a border around the specified region by using the specified brush.@@bool
     //@args@ hdc|HDC|Handle to a device context@@rgn|HRGN|Handle to a region to be drawn a border around it@@hbr|HBRUSH|Brush to paint the border with@@w|int|Width of vertical brush strokes.@@h|int|Height of horizontal brush strokes.
-    LONG hdc, hrgn, brush;
+    LONG hdc;
+    LONG hrgn; LONG brush;
     INT w, h;
     if (!PyArg_ParseTuple(args, "lllii", &hdc, &hrgn, &brush, &w, &h)) {
         return NULL;
@@ -1027,7 +1015,8 @@ static PyObject* PyFrameRgn(PyObject* self, PyObject* args) {
     return Py_BuildValue("O", PyBool_FromLong(TRUE));
 }
 static PyObject* PyInvertRgn(PyObject* self, PyObject* args) {
-    LONG hdc, hrgn;
+    LONG hdc;
+    LONG hrgn;
     if (!PyArg_ParseTuple(args, "ll", &hdc, &hrgn)) {
         return NULL;
     }
@@ -1134,7 +1123,204 @@ static PyObject* PyCreateHatchBrush(PyObject* self, PyObject* args) {
     return Py_BuildValue("l", hatchBrush);
 }
 
+typedef struct _PyDIBSection {
+    LPRGBQUAD lpRgb;
+    LONG nSize;
+    LONG nWidth;
+    LONG nHeight;
+} PyDIBSection, *PPyDIBSection, *LPPyDibSection;
+
+static PyObject* PyCreateDIBSection(PyObject*_, PyObject* args) {
+    HANDLE hHeap = GetProcessHeap( );
+    PBITMAPINFO bmp = (PBITMAPINFO)HeapAlloc( hHeap, 0, sizeof(BITMAPINFO) );
+    if (bmp == NULL) { PyErr_SetString(PyExc_MemoryError, "Out of memory!"); return NULL; }
+    HDC hdc;
+    if (!PyArg_ParseTuple(args, "l(llHkkllkk)",
+        &hdc,
+        &bmp->bmiHeader.biWidth,
+        &bmp->bmiHeader.biHeight,
+        &bmp->bmiHeader.biBitCount,
+        &bmp->bmiHeader.biCompression,
+        &bmp->bmiHeader.biSizeImage,
+        &bmp->bmiHeader.biXPelsPerMeter,
+        &bmp->bmiHeader.biYPelsPerMeter,
+        &bmp->bmiHeader.biClrUsed,
+        &bmp->bmiHeader.biClrImportant
+    )) return NULL;
+    
+    LONG nSize = bmp->bmiHeader.biWidth * bmp->bmiHeader.biHeight * sizeof(COLORREF);
+    bmp->bmiHeader.biSize = sizeof(BITMAPINFO);
+    bmp->bmiHeader.biPlanes = 1;
+
+    INT usage = DIB_RGB_COLORS;
+    LPRGBQUAD prgbDst = (LPRGBQUAD)HeapAlloc( hHeap, 0, nSize );
+    HBITMAP hbm = CreateDIBSection(hdc, &bmp, 0, &prgbDst, NULL, 0);
+
+    LPPyDibSection res = (LPPyDibSection)HeapAlloc( hHeap, 0, sizeof(PyDIBSection) );
+
+    if (res == NULL || prgbDst == NULL) {
+        HeapFree(hHeap, 0, bmp);
+        PyErr_SetString(PyExc_MemoryError, "Out of memory!");
+        return NULL;
+    }
+    
+    res->lpRgb = prgbDst;
+    res->nWidth = bmp->bmiHeader.biWidth;
+    res->nHeight = bmp->bmiHeader.biHeight;
+    res->nSize = nSize;
+
+    HeapFree(hHeap, 0, bmp);
+
+    return Py_BuildValue("(LL)", (LONGLONG)hbm, (LONGLONG)res);
+}
+static PyObject* PyFreeDIBSection(PyObject*_, PyObject* args) {
+    LPPyDibSection rgb;
+    if (!PyArg_ParseTuple(args, "L", &rgb)) return NULL;
+    
+    free(rgb);
+
+    return Py_BuildValue("i", 0);
+}
+
+typedef struct {
+    PyObject_HEAD
+        /* Your internal 'loc' data. */
+        LPPyDibSection loc;
+} PY_DIBDATA;
+
+static void PyDib_dealloc(PY_DIBDATA* self)
+{
+    HeapFree(GetProcessHeap( ), 0, self->loc->lpRgb);
+    HeapFree(GetProcessHeap( ), 0, self->loc);
+    self->ob_base.ob_type->tp_free((PyObject*)self);
+}
+
+static int PyDib_init(PY_DIBDATA* self, PyObject* args, PyObject* kwds)
+{
+    if (!PyArg_ParseTuple(args, "L", &self->loc))
+        return NULL;
+
+    return 0;
+}
+
+static PyObject* PyDib_SetSectionData(PY_DIBDATA* self, PyObject* args) {
+    LPPyDibSection rgb = self->loc;
+    CHAR r, g, b;
+    PyObject* bArr;
+    if (!PyArg_ParseTuple(args, "O", &bArr)) return NULL;
+
+    if (!PyByteArray_Check(bArr)) {
+        PyErr_SetString(PyExc_TypeError, "argument 2: excepted bytearray object");
+        return NULL;
+    }
+
+    LONGLONG length = PyByteArray_Size(bArr);
+    CHAR* arr = PyByteArray_AsString(bArr);
+
+    for (INT i = 0; i < length; i += 3) {
+        rgb->lpRgb[i].rgbRed = arr[i + 0];
+        rgb->lpRgb[i].rgbGreen = arr[i + 1];
+        rgb->lpRgb[i].rgbBlue = arr[i + 2];
+    }
+
+    return Py_BuildValue("i", 0);
+}
+static PyObject* PyDib_GetSectionData(PY_DIBDATA* self, PyObject* args) {
+    HANDLE hHeap = GetProcessHeap( );
+    LPPyDibSection rgb = self->loc->lpRgb;
+    CHAR r, g, b;
+    INT ra;
+
+    LONG len = rgb->nWidth * rgb->nHeight;
+
+    CHAR* result = HeapAlloc(hHeap, 0, sizeof(CHAR) * len * 3);
+
+    printf("%ld x %ld (%ld)\n", rgb->nWidth, rgb->nHeight, rgb->nSize);
+
+    for (INT i = 0; i < len; i+= 3) {
+        printf("%d", i);
+
+        ra = i != 0 ? i / 3 : 0;
+
+        r = rgb->lpRgb[ra].rgbRed;
+        g = rgb->lpRgb[ra].rgbGreen;
+        b = rgb->lpRgb[ra].rgbBlue;
+        result[i] = r;
+        result[i + 1] = g;
+        result[i + 2] = b;
+    }
+
+    PyObject* bArr = PyByteArray_FromStringAndSize(result, len);
+
+    HeapFree(hHeap, 0, result);
+
+    return Py_BuildValue("O", bArr);
+}
+
+
+static PyMethodDef PyDib_methods[] = {
+    { "SetDIBSectionData", PyDib_SetSectionData, METH_VARARGS },
+    { "GetDIBSectionData", PyDib_GetSectionData, METH_NOARGS },
+    {NULL}
+};
+
+static PyMemberDef PyDib_members[] = {
+    {"loc", T_LONGLONG, offsetof(PY_DIBDATA, loc), READONLY, "Pointer address to structure defining the properties of the DIB." },
+    {NULL}  /* Sentinel */
+};
+
+static PyObject* PyDib_new(PyTypeObject* type, PyObject* args, PyObject* kwds) {
+    PY_DIBDATA* self;
+
+    self = (PY_DIBDATA*)type->tp_alloc(type, 0);
+    self->loc = 0;
+
+    return (PyObject*)self;
+}
+
+static PyTypeObject PyDib_Types = {
+    PyObject_HEAD_INIT(NULL)
+    "WinAPY_gdi.DIBSection",   /*tp_name*/
+    sizeof(PY_DIBDATA),        /*tp_basicsize*/
+    0,                         /*tp_itemsize*/
+    (destructor)PyDib_dealloc, /*tp_dealloc*/
+    0,                         /*tp_print*/
+    0,                         /*tp_getattr*/
+    0,                         /*tp_setattr*/
+    0,                         /*tp_compare*/
+    0,                         /*tp_repr*/
+    0,                         /*tp_as_number*/
+    0,                         /*tp_as_sequence*/
+    0,                         /*tp_as_mapping*/
+    0,                         /*tp_hash */
+    0,                         /*tp_call*/
+    0,                         /*tp_str*/
+    0,                         /*tp_getattro*/
+    0,                         /*tp_setattro*/
+    0,                         /*tp_as_buffer*/
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,/*tp_flags*/
+    "DIB section object",          /* tp_doc */
+    0,                         /* tp_traverse */
+    0,                         /* tp_clear */
+    0,                         /* tp_richcompare */
+    0,                         /* tp_weaklistoffset */
+    0,                         /* tp_iter */
+    0,                         /* tp_iternext */
+    PyDib_methods,      /* tp_methods, error here! */
+    PyDib_members,      /* tp_members */
+    0,                         /* tp_getset */
+    0,                         /* tp_base */
+    0,                         /* tp_dict */
+    0,                         /* tp_descr_get */
+    0,                         /* tp_descr_set */
+    0,                         /* tp_dictoffset */
+    (initproc)PyDib_init,/* tp_init */
+    0,                         /* tp_alloc */
+    PyDib_new,                 /* tp_new */
+};
+
 static PyMethodDef module_methods[] = {
+    {"CreateDIBSection", (PyCFunction)PyCreateDIBSection, METH_VARARGS},
     {"PatBlt", (PyCFunction)PyPatBlt, METH_VARARGS},
     {"DeleteDC", (PyCFunction)PyDeleteDC, METH_VARARGS},
     {"BitBlt", (PyCFunction)PyBitBlt, METH_VARARGS},
@@ -1227,13 +1413,23 @@ static PyMethodDef module_methods[] = {
 static struct PyModuleDef ModuleCombinations =
 {
     PyModuleDef_HEAD_INIT,
-    "WinAPY_gdi", /* name of module */
+    "winapy_gdi", /* name of module */
     NULL,
-    -1,   /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
+    -1,
     module_methods
 };
 
 
-void PyInit_winapy_gdi(void) {
-    PyModule_Create(&ModuleCombinations);
+PyMODINIT_FUNC PyInit_winapy_gdi(void) {
+    PyObject* m;
+
+    if (PyType_Ready(&PyDib_Types) < 0)
+        return NULL;
+
+    m = PyModule_Create(&ModuleCombinations);
+
+    Py_INCREF(&PyDib_Types);
+    PyModule_AddObject(m, "DIBSection", (PyObject*)&PyDib_Types);
+
+    return Py_BuildValue("O", m);
 }
