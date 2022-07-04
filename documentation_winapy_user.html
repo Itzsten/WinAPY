@@ -47,6 +47,7 @@ div.top {
     background-color: rgb(41, 41, 41);
     position: sticky;
     top: 0;
+    z-index: 99999999999; /* :) */
 }
 div.container {
     margin-left: 7px;
@@ -61,6 +62,8 @@ h2.fh {
 a {
     color: white;
     transition: 0.3s;
+}
+a.s {
     text-decoration: none;
 }
 a:hover {
@@ -71,7 +74,7 @@ a:hover {
 <body>
 
 <div class="top">
-<h2 class="fh"><a href="documentation.html">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
+<h2 class="fh"><a href="documentation.html" class="s">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
 <br><br>
 <hr>
 </div>
@@ -111,6 +114,22 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 
 <div class="container">
 
+<h1>AbortSystemShutdown</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+AbortSystemShutdown" style="color:SlateBlue">View AbortSystemShutdown on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">AbortSystemShutdown</span><span style="color:white;">(computer: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>AbortSystemShutdownA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+AbortSystemShutdownA" style="color:SlateBlue">View AbortSystemShutdownA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">AbortSystemShutdownA</span><span style="color:white;">(computer: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>AbortSystemShutdownW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+AbortSystemShutdownW" style="color:SlateBlue">View AbortSystemShutdownW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">AbortSystemShutdownW</span><span style="color:white;">(computer: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>ActivateKeyboardLayout</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+ActivateKeyboardLayout" style="color:SlateBlue">View ActivateKeyboardLayout on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ActivateKeyboardLayout</span><span style="color:white;">(hkl: int, flags: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>Beep</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">Beep</span><span style="color:white;">(freq: int, duration: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -122,6 +141,50 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><i>duration</i> int
 <br><blockquote>The duration of the sound, in milliseconds.</blockquote>
 </h4>
+<hr>
+<h1>BlockInput</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+BlockInput" style="color:SlateBlue">View BlockInput on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">BlockInput</span><span style="color:white;">(b: bool)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>CloseHandle</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CloseHandle" style="color:SlateBlue">View CloseHandle on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CloseHandle</span><span style="color:white;">(h: HANDLE)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>CommandLineToArgv</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CommandLineToArgv" style="color:SlateBlue">View CommandLineToArgv on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CommandLineToArgv</span><span style="color:white;">(cmd_line: str)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>CommandLineToArgvW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CommandLineToArgvW" style="color:SlateBlue">View CommandLineToArgvW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CommandLineToArgvW</span><span style="color:white;">(cmd_line: str)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>CopyFile</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CopyFile" style="color:SlateBlue">View CopyFile on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CopyFile</span><span style="color:white;">(current_file: str, new_file: str, bool_fail_if_exists: bool)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>CopyFileA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CopyFileA" style="color:SlateBlue">View CopyFileA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CopyFileA</span><span style="color:white;">(current_file: str, new_file: str, bool_fail_if_exists: bool)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>CopyFileW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CopyFileW" style="color:SlateBlue">View CopyFileW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CopyFileW</span><span style="color:white;">(current_file: str, new_file: str, bool_fail_if_exists: bool)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>DeleteFile</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+DeleteFile" style="color:SlateBlue">View DeleteFile on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DeleteFile</span><span style="color:white;">(target_file: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>DeleteFileA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+DeleteFileA" style="color:SlateBlue">View DeleteFileA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DeleteFileA</span><span style="color:white;">(target_file: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>DeleteFileW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+DeleteFileW" style="color:SlateBlue">View DeleteFileW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DeleteFileW</span><span style="color:white;">(target_file: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>DestroyIcon</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+DestroyIcon" style="color:SlateBlue">View DestroyIcon on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">DestroyIcon</span><span style="color:white;">(ic: HICON)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>DrawIcon</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
@@ -165,6 +228,10 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><blockquote>Additional flags</blockquote>
 </h4>
 <hr>
+<h1>EnableWindow</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+EnableWindow" style="color:SlateBlue">View EnableWindow on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">EnableWindow</span><span style="color:white;">(h: HWND, enabled: bool)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>EnumChildWindows</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">EnumChildWindows</span><span style="color:white;">(hwnd: HWND, callback: FunctionType, lParam: AnyType)</span> <span style="color:#f92672">-&gt;</span> NoneType:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -198,6 +265,18 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><blockquote>The reason for initiating the shutdown.</blockquote>
 </h4>
 <hr>
+<h1>ExtractIcon</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+ExtractIcon" style="color:SlateBlue">View ExtractIcon on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ExtractIcon</span><span style="color:white;">(hinst: HINSTANCE, name: str, index: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>ExtractIconA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+ExtractIconA" style="color:SlateBlue">View ExtractIconA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ExtractIconA</span><span style="color:white;">(hinst: HINSTANCE, name: str, index: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>ExtractIconW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+ExtractIconW" style="color:SlateBlue">View ExtractIconW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">ExtractIconW</span><span style="color:white;">(hinst: HINSTANCE, name: str, index: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>FillRect</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">FillRect</span><span style="color:white;">(hdc: HDC, rect: tuple, hbr: HBRUSH)</span> <span style="color:#f92672">-&gt;</span> HWND:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -221,6 +300,46 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <h4><i>hdc</i> HDC
 <br><blockquote>Handle to a device context</blockquote>
 </h4>
+<hr>
+<h1>GetCommandLine</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetCommandLine" style="color:SlateBlue">View GetCommandLine on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetCommandLine</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetCommandLineA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetCommandLineA" style="color:SlateBlue">View GetCommandLineA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetCommandLineA</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetCommandLineW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetCommandLineW" style="color:SlateBlue">View GetCommandLineW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetCommandLineW</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetComputerName</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetComputerName" style="color:SlateBlue">View GetComputerName on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetComputerName</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetComputerNameA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetComputerNameA" style="color:SlateBlue">View GetComputerNameA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetComputerNameA</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetComputerNameEx</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetComputerNameEx" style="color:SlateBlue">View GetComputerNameEx on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetComputerNameEx</span><span style="color:white;">(target_name: int)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetComputerNameExA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetComputerNameExA" style="color:SlateBlue">View GetComputerNameExA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetComputerNameExA</span><span style="color:white;">(target_name: int)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetComputerNameExW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetComputerNameExW" style="color:SlateBlue">View GetComputerNameExW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetComputerNameExW</span><span style="color:white;">(target_name: int)</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetComputerNameW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetComputerNameW" style="color:SlateBlue">View GetComputerNameW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetComputerNameW</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> str:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetConsoleWindow</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetConsoleWindow" style="color:SlateBlue">View GetConsoleWindow on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetConsoleWindow</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> O:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>GetCursorInfo</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
@@ -253,12 +372,36 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <h4>Retrieves a handle to the desktop window.</h4>
 
 <hr>
+<h1>GetDialogBaseUnits</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetDialogBaseUnits" style="color:SlateBlue">View GetDialogBaseUnits on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDialogBaseUnits</span><span style="color:white;">()</span>:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetDlgCtrlID</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetDlgCtrlID" style="color:SlateBlue">View GetDlgCtrlID on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetDlgCtrlID</span><span style="color:white;">(h: HWND)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetKeyboardLayout</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetKeyboardLayout" style="color:SlateBlue">View GetKeyboardLayout on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetKeyboardLayout</span><span style="color:white;">(thread: int)</span>:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>GetLastError</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetLastError</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <h2>Description</h2>
 <h4>Retrieves the last error code caused by a WinAPY function.</h4>
 
+<hr>
+<h1>GetModuleHandle</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetModuleHandle" style="color:SlateBlue">View GetModuleHandle on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetModuleHandle</span><span style="color:white;">(module: str)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetModuleHandleA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetModuleHandleA" style="color:SlateBlue">View GetModuleHandleA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetModuleHandleA</span><span style="color:white;">(module: str)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>GetModuleHandleW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+GetModuleHandleW" style="color:SlateBlue">View GetModuleHandleW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">GetModuleHandleW</span><span style="color:white;">(module: str)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>GetSystemMetrics</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
@@ -632,6 +775,18 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><blockquote>The contents and behavior of the dialog box.</blockquote>
 </h4>
 <hr>
+<h1>MessageBoxIndirect</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+MessageBoxIndirect" style="color:SlateBlue">View MessageBoxIndirect on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBoxIndirect</span><span style="color:white;">(hwnd: int, ic: HICON)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>MessageBoxIndirectA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+MessageBoxIndirectA" style="color:SlateBlue">View MessageBoxIndirectA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBoxIndirectA</span><span style="color:white;">(hwnd: int, ic: HICON)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>MessageBoxIndirectW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+MessageBoxIndirectW" style="color:SlateBlue">View MessageBoxIndirectW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBoxIndirectW</span><span style="color:white;">(hwnd: int, ic: HICON)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>MessageBoxW</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">MessageBoxW</span><span style="color:white;">(hWnd: HWND, msg: str, title: str, type: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -647,6 +802,18 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><i>type</i> int
 <br><blockquote>The contents and behavior of the dialog box.</blockquote>
 </h4>
+<hr>
+<h1>PlaySound</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+PlaySound" style="color:SlateBlue">View PlaySound on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PlaySound</span><span style="color:white;">(sound: str/int, mod: int, flags: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>PlaySoundA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+PlaySoundA" style="color:SlateBlue">View PlaySoundA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PlaySoundA</span><span style="color:white;">(sound: str/int, mod: int, flags: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>PlaySoundW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+PlaySoundW" style="color:SlateBlue">View PlaySoundW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">PlaySoundW</span><span style="color:white;">(sound: str/int, mod: int, flags: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>RedrawWindow</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
@@ -676,6 +843,30 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><blockquote>A handle to a device context to be released</blockquote>
 </h4>
 <hr>
+<h1>SendDlgItemMessage</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SendDlgItemMessage" style="color:SlateBlue">View SendDlgItemMessage on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SendDlgItemMessage</span><span style="color:white;">(h_dlg: HWND, item: int, msg: int, w_param: str/int, l_param: str/int/tuple)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SendDlgItemMessageA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SendDlgItemMessageA" style="color:SlateBlue">View SendDlgItemMessageA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SendDlgItemMessageA</span><span style="color:white;">(h_dlg: HWND, item: int, msg: int, w_param: str/int, l_param: str/int/tuple)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SendDlgItemMessageW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SendDlgItemMessageW" style="color:SlateBlue">View SendDlgItemMessageW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SendDlgItemMessageW</span><span style="color:white;">(h_dlg: HWND, item: int, msg: int, w_param: str/int, l_param: str/int/tuple)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SendMessage</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SendMessage" style="color:SlateBlue">View SendMessage on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SendMessage</span><span style="color:white;">(h: HWND, msg: int, w_param: int, l_param_x: str/int, l_param_y: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SendMessageA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SendMessageA" style="color:SlateBlue">View SendMessageA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SendMessageA</span><span style="color:white;">(h: HWND, msg: int, w_param: int, l_param_x: str/int, l_param_y: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SendMessageW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SendMessageW" style="color:SlateBlue">View SendMessageW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SendMessageW</span><span style="color:white;">(h: HWND, msg: int, w_param: int, l_param_x: str/int, l_param_y: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>SetCursorPos</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetCursorPos</span><span style="color:white;">(x: int, y: int)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -687,6 +878,18 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><i>y</i> int
 <br><blockquote>The new Y-coordinate of the cursor</blockquote>
 </h4>
+<hr>
+<h1>SetDlgItemText</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SetDlgItemText" style="color:SlateBlue">View SetDlgItemText on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetDlgItemText</span><span style="color:white;">(h: HWND, ctrl: int, s: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SetDlgItemTextA</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SetDlgItemTextA" style="color:SlateBlue">View SetDlgItemTextA on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetDlgItemTextA</span><span style="color:white;">(h: HWND, ctrl: int, s: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>SetDlgItemTextW</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+SetDlgItemTextW" style="color:SlateBlue">View SetDlgItemTextW on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">SetDlgItemTextW</span><span style="color:white;">(h: HWND, ctrl: int, s: str)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>ShowWindow</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
