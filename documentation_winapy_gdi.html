@@ -47,6 +47,7 @@ div.top {
     background-color: rgb(41, 41, 41);
     position: sticky;
     top: 0;
+    z-index: 99999999999; /* :) */
 }
 div.container {
     margin-left: 7px;
@@ -61,6 +62,8 @@ h2.fh {
 a {
     color: white;
     transition: 0.3s;
+}
+a.s {
     text-decoration: none;
 }
 a:hover {
@@ -71,7 +74,7 @@ a:hover {
 <body>
 
 <div class="top">
-<h2 class="fh"><a href="documentation.html">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
+<h2 class="fh"><a href="documentation.html" class="s">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
 <br><br>
 <hr>
 </div>
@@ -278,6 +281,10 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <h4><i>hdc</i> HDC
 <br><blockquote>Handle to the device context, or None</blockquote>
 </h4>
+<hr>
+<h1>CreateDIBSection</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+CreateDIBSection" style="color:SlateBlue">View CreateDIBSection on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">CreateDIBSection</span><span style="color:white;">(hdc: HDC)</span>:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>CreateEllipticRgn</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
@@ -735,9 +742,9 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><blockquote>Handle to a device context</blockquote>
 </h4>
 <hr>
-<h1>InvertRgn</h1>
-<p>No documentation provided yet.</p>
-
+<h1>InvertRgn</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+InvertRgn" style="color:SlateBlue">View InvertRgn on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">InvertRgn</span><span style="color:white;">(hdc: int, hrgn: int)</span> <span style="color:#f92672">-&gt;</span> O:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>LineTo</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
