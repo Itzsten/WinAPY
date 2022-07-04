@@ -62,6 +62,8 @@ h2.fh {
 a {
     color: white;
     transition: 0.3s;
+}
+a.s {
     text-decoration: none;
 }
 a:hover {
@@ -72,7 +74,7 @@ a:hover {
 <body>
 
 <div class="top">
-<h2 class="fh"><a href="documentation.html">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
+<h2 class="fh"><a href="documentation.html" class="s">WinAPY Documentation</a></h2><input placeholder="Search functions here..." id="search">
 <br><br>
 <hr>
 </div>
@@ -112,6 +114,42 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 
 <div class="container">
 
+<h1>midiOutClose</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutClose" style="color:SlateBlue">View midiOutClose on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutClose</span><span style="color:white;">(hwo: HMIDIOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutLongMsg</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutLongMsg" style="color:SlateBlue">View midiOutLongMsg on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutLongMsg</span><span style="color:white;">(hmo: HMIDIOUT, pytup: midihdr)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutOpen</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutOpen" style="color:SlateBlue">View midiOutOpen on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutOpen</span><span style="color:white;">(device_id: int, dw_callback: int, dw_instance: int, dopen: int)</span> <span style="color:#f92672">-&gt;</span> HANDLE:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutPrepareHeader</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutPrepareHeader" style="color:SlateBlue">View midiOutPrepareHeader on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutPrepareHeader</span><span style="color:white;">(h_out: HMIDIOUT, b_arr: bytearray, user: int, flags: int)</span>:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutReset</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutReset" style="color:SlateBlue">View midiOutReset on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutReset</span><span style="color:white;">(hmo: HMIDIOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutSetVolume</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutSetVolume" style="color:SlateBlue">View midiOutSetVolume on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutSetVolume</span><span style="color:white;">(hwo: HMIDIOUT, dw_lo: int, dw_hi: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutShortMsg</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutShortMsg" style="color:SlateBlue">View midiOutShortMsg on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutShortMsg</span><span style="color:white;">(hwo: HMIDIOUT, dw_lo: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutShortMsgFromBytes</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutShortMsgFromBytes" style="color:SlateBlue">View midiOutShortMsgFromBytes on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutShortMsgFromBytes</span><span style="color:white;">(hmo: HMIDIOUT, first_byte: int, second_byte: int, third_byte: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>midiOutUnprepareHeader</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+midiOutUnprepareHeader" style="color:SlateBlue">View midiOutUnprepareHeader on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">midiOutUnprepareHeader</span><span style="color:white;">(hmo: HMIDIOUT, pytup: midihdr)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>waveOutClose</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutClose</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> bool:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -121,6 +159,30 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <h4><i>hwo</i> HWAVEOUT
 <br><blockquote>Handle to the waveform-audio output device.</blockquote>
 </h4>
+<hr>
+<h1>waveOutGetDevCaps</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutGetDevCaps" style="color:SlateBlue">View waveOutGetDevCaps on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutGetDevCaps</span><span style="color:white;">(device_id: int)</span>:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutGetID</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutGetID" style="color:SlateBlue">View waveOutGetID on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutGetID</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutGetNumDevs</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutGetNumDevs" style="color:SlateBlue">View waveOutGetNumDevs on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutGetNumDevs</span><span style="color:white;">()</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutGetPitch</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutGetPitch" style="color:SlateBlue">View waveOutGetPitch on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutGetPitch</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutGetPlaybackRate</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutGetPlaybackRate" style="color:SlateBlue">View waveOutGetPlaybackRate on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutGetPlaybackRate</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutGetVolume</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutGetVolume" style="color:SlateBlue">View waveOutGetVolume on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutGetVolume</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> HH:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>waveOutOpen</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
@@ -140,6 +202,10 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><blockquote><ul><li><b>CALLBACK_EVENT</b><br>The dwCallback parameter is an event handle.<br></li><li><b>CALLBACK_NULL</b><br> No callback mechanism. This is the default setting.<br></li><li><b>CALLBACK_THREAD</b><br> The dwCallback parameter is a thread identifier.<br></li><li><b>CALLBACK_WINDOW</b><br> The dwCallback parameter is a window handle.<br></li><li><b>WAVE_ALLOWSYNC</b><br> If this flag is specified, a synchronous waveform-audio device can be opened. If this flag is not specified while opening a synchronous driver, the device will fail to open.<br></li><li><b>WAVE_MAPPED_DEFAULT_COMMUNICATION_DEVICE</b><br> If this flag is specified and the uDeviceID parameter is WAVE_MAPPER, the function opens the default communication device. This flag applies only when uDeviceID equals WAVE_MAPPER. (Requires Windows 7)<br></li><li><b>WAVE_FORMAT_DIRECT</b><br> If this flag is specified, the ACM driver does not perform conversions on the audio data.<br></li><li><b>WAVE_FORMAT_QUERY</b><br> If this flag is specified, waveOutOpen queries the device to determine if it supports the given format, but the device is not actually opened.<br></li><li><b>WAVE_MAPPED</b><br> If this flag is specified, the uDeviceID parameter specifies a waveform-audio device to be mapped to by the wave mapper.<br></li></ul></blockquote>
 </h4>
 <hr>
+<h1>waveOutPause</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutPause" style="color:SlateBlue">View waveOutPause on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutPause</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
 <h1>waveOutPrepareHeader</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
 2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutPrepareHeader</span><span style="color:white;">(hwo: HWAVEOUT, hdr: tuple)</span> <span style="color:#f92672">-&gt;</span> tuple:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
@@ -151,6 +217,18 @@ document.getElementById("search").addEventListener("keyup", updateRows);
 <br><i>hdr</i> tuple
 <br><blockquote>Tuple that identifies the data block to be prepared. Must contain the followings values;<br><ul><li>The data block to be prepared, as a <b>bytearray</b> object.</li><li>When the header is used in input, specifies how much data is in the buffer. If it is not used in input, set this value to 0.</li><li>User data, or 0.</li><li>A bitwise OR of zero of more flags.</li><li>Number of times to play the loop. This member is used only with output buffers. Zero if unused</li></ul></blockquote>
 </h4>
+<hr>
+<h1>waveOutRestart</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutRestart" style="color:SlateBlue">View waveOutRestart on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutRestart</span><span style="color:white;">(hwo: HWAVEOUT)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutSetPitch</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutSetPitch" style="color:SlateBlue">View waveOutSetPitch on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutSetPitch</span><span style="color:white;">(hwo: HWAVEOUT, pitch: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
+<hr>
+<h1>waveOutSetVolume</h1><h4><i>Note that this documentation has been automatically generated. It may be flawed or incorrect.</i></h4>
+<h4><a href="https://www.google.com/search?q=site%3Adocs.microsoft.com+waveOutSetVolume" style="color:SlateBlue">View waveOutSetVolume on Microsoft Docs</a></h4><div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
+2</pre></td><td><pre style="margin:0;line-height:125%"><span style="color:#66d9ef">def <span style="color:#a6e22e">waveOutSetVolume</span><span style="color:white;">(hwo: HWAVEOUT, left: int, right: int)</span> <span style="color:#f92672">-&gt;</span> int:<br>    <span style="color:#f92672">...</span></pre></td></tr></table></div>
 <hr>
 <h1>waveOutUnprepareHeader</h1>
 <div style="background:#272822;overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin:0;line-height:125%;color:#444;">1
